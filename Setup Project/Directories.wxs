@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+
+			<!-- This is for Desktop Folder -->
+			<Directory Id="DesktopAppFolder">
+				<Directory Id="DesktopFolder" Name="!(loc.ProductNameFolder)" />
+			</Directory>
+
+			<!-- This is for Start Menu Folder -->
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="InstallProgramMenuFolder" Name="!(loc.ProductNameFolder)" />
+			</Directory>
+
+			<!-- This is for Program Files Folder where the application will be saved to x86 Folder -->
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="!(loc.ProductNameFolder)" />
+			</Directory>
+
+		</Directory>
+	</Fragment>
+
+</Wix>

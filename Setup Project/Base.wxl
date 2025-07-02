@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+
+	<!-- This Section is for adding Base imports to the application installer -->
+	<String Id="ProductName_x86">VolunteerManagement (32bit)</String>
+	<String Id="ProductName_x64">VolunteerManagement (64bit)</String>
+	<String Id="ProductName">Volunteer Management UI</String>
+	<String Id="ProductNameFolder">Volunteer Management Client</String>
+	<String Id="Language">1033</String>
+	<String Id="CompanyName"></String>
+	<String Id="Description"></String>
+	<String Id="Keywords">Volunteer Managment UI, Volunteer Management Client UI, Volunteer Management GUI</String>
+	<String Id="Comments"></String>
+	<String Id="DowngradeErrorMessage">A newer version of Volunteer Management Application is already installed.</String>
+
+</WixLocalization>

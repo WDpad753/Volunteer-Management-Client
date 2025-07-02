@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+	<Fragment>
+
+		<!-- Product Components -->
+		<ComponentGroup Id="ProductComponents">
+
+			<ComponentRef Id="VolunteerManagementStartFolder"/>
+
+		</ComponentGroup>
+
+		<!-- Installed Files -->
+		<DirectoryRef Id="INSTALLFOLDER" FileSource="$(var.BasePath)">
+
+			<Component Id="VolunteerManagementStartFolder" Guid="{5122EF43-DB14-4FB7-8328-4BB198AD435F}">
+				<Shortcut Id="ShortcutVolunteerManagement"
+						  Name="Volunteer Management"
+						  Target="[INSTALLFOLDER]VolunteerManagementUI.exe"
+						  Directory="InstallProgramMenuFolder"
+						  WorkingDirectory="INSTALLFOLDER"
+						  />
+
+				<!-- Unique Key for the application shortcut -->
+				<RegistryValue Id="RegShortcutKey" Root="HKCU" Key="SOFTWARE\VolunteerManagement\!(loc.ProductNameFolder)" Name="!(loc.ProductNameFolder) Shortcut" Value="1" Type="integer" KeyPath="yes" />
+
+				<RemoveFolder Id="RemoveStartMenu" Directory="InstallProgramMenuFolder" On="uninstall" />
+			</Component>
+		</DirectoryRef>
+
+		<!-- Shortcut File -->
+		<DirectoryRef Id="DesktopFolder">
+			<Component Id="ApplicationShortcutDesktop" Guid="{CD1C6506-DF4F-4D9B-A0B1-52C52C047BB3}">
+				<Shortcut Id="DesktopShortcutVolunteerManagement"
+						  Name="Volunteer Management"
+						  Target="[INSTALLFOLDER]VolunteerManagementUI.exe"
+						  WorkingDirectory="INSTALLFOLDER"
+				/>
+
+				<!-- Unique Key for the application shortcut in Desktop -->
+				<RegistryValue Id="RegDesktopShortcutKey" Root="HKCU" Key="SOFTWARE\VolunteerManagement\!(loc.ProductNameFolder)" Name="!(loc.ProductNameFolder) Desktop Shortcut" Value="1" Type="integer" KeyPath="yes" />
+
+				<RemoveFolder Id="RemoveDesktopShortcut" Directory="DesktopAppFolder" On="uninstall" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+
+</Wix>

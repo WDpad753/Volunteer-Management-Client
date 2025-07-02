@@ -1,29 +1,57 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿	<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
-    <RootNamespace>Volunteer_Management_UI</RootNamespace>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<RootNamespace>Volunteer_Management_UI</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<Deterministic>false</Deterministic>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="MVVM\Model\" />
-    <Folder Include="MVVM\ViewModel\" />
-    <Folder Include="MVVM\Views\Login\" />
-    <Folder Include="Config\" />
-    <Folder Include="Core\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<ShouldCreateLogs>True</ShouldCreateLogs>
+		<AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+		<UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+		<UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+		<UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+		<UpdatePackageVersion>False</UpdatePackageVersion>
+		<AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+		<InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+		<AssemblyFileVersionSettings>None.None.DateStamp.None</AssemblyFileVersionSettings>
+		<AssemblyVersionSettings>None.None.DateStamp.Increment</AssemblyVersionSettings>
+	</PropertyGroup>
+  
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<ShouldCreateLogs>True</ShouldCreateLogs>
+		<AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+		<UpdateAssemblyVersion>True</UpdateAssemblyVersion>
+		<UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
+		<UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+		<AssemblyVersionSettings>None.None.DateStamp.Increment</AssemblyVersionSettings>
+		<UpdatePackageVersion>False</UpdatePackageVersion>
+		<AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+		<InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+		<AssemblyFileVersionSettings>None.None.DateStamp.Increment</AssemblyFileVersionSettings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseClass\BaseClass.csproj" />
-    <ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
-    <ProjectReference Include="..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj" />
-    <ProjectReference Include="..\ChangeLogGenerator\ChangeLogCoreLibrary\ChangeLogCoreLibrary.csproj" />
-    <ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="MVVM\Model\" />
+		<Folder Include="MVVM\ViewModel\" />
+		<Folder Include="MVVM\Views\Login\" />
+		<Folder Include="Config\" />
+		<Folder Include="Core\" />
+		<Folder Include="Services\" />
+	</ItemGroup>
 
-</Project>
+	<ItemGroup>
+		<ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseClass\BaseClass.csproj" />
+		<ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
+		<ProjectReference Include="..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj" />
+		<ProjectReference Include="..\ChangeLogGenerator\ChangeLogCoreLibrary\ChangeLogCoreLibrary.csproj" />
+		<ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
+	</ItemGroup>
+
+	</Project>
