@@ -13,7 +13,7 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<ShouldCreateLogs>True</ShouldCreateLogs>
-		<AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+		<AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
 		<UpdateAssemblyVersion>True</UpdateAssemblyVersion>
 		<UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
 		<UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
@@ -26,7 +26,7 @@
   
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<ShouldCreateLogs>True</ShouldCreateLogs>
-		<AdvancedSettingsExpanded>False</AdvancedSettingsExpanded>
+		<AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
 		<UpdateAssemblyVersion>True</UpdateAssemblyVersion>
 		<UpdateAssemblyFileVersion>True</UpdateAssemblyFileVersion>
 		<UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>

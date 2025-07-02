@@ -7,10 +7,10 @@
 	<String Id="ProductName">Volunteer Management UI</String>
 	<String Id="ProductNameFolder">Volunteer Management Client</String>
 	<String Id="Language">1033</String>
-	<String Id="CompanyName"></String>
-	<String Id="Description"></String>
-	<String Id="Keywords">Volunteer Managment UI, Volunteer Management Client UI, Volunteer Management GUI</String>
-	<String Id="Comments"></String>
+	<String Id="CompanyName">Local</String>
+	<String Id="Description">No Description at the moment</String>
+	<String Id="Keywords">VolunteerManagementUI</String>
+	<String Id="Comments">None</String>
 	<String Id="DowngradeErrorMessage">A newer version of Volunteer Management Application is already installed.</String>
 
 </WixLocalization>

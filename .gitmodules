@@ -1,0 +1,7 @@
+[submodule "ChangeLogGenerator"]
+    path = ChangeLogGenerator
+    url = https://github.com/WDpad753/ChangeLogGenerator.git
+	
+[submodule "UIBaseClass"]
+    path = UIBaseClass
+    url = https://github.com/WDpad753/UIBaseClass.git

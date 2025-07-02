@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Volunteer Management UI", "Volunteer Management UI.csproj", "{0185F661-0C10-47E6-AFC2-38EE44A1C446}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volunteer Management UI", "Volunteer Management UI.csproj", "{0185F661-0C10-47E6-AFC2-38EE44A1C446}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBaseClass", "..\UIBaseClass\UIBaseClass\UIBaseClass.csproj", "{3E3667FE-B508-D9E3-82D9-437A7336AF3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UIBaseClass", "..\UIBaseClass\UIBaseClass\UIBaseClass.csproj", "{3E3667FE-B508-D9E3-82D9-437A7336AF3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeLogConsole", "..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj", "{53343903-DCC0-7B5E-591E-FF97464FA09A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeLogConsole", "..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj", "{53343903-DCC0-7B5E-591E-FF97464FA09A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangeLogCoreLibrary", "..\ChangeLogGenerator\ChangeLogCoreLibrary\ChangeLogCoreLibrary.csproj", "{C4ED983B-718C-1332-78A6-4406F989D956}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeLogCoreLibrary", "..\ChangeLogGenerator\ChangeLogCoreLibrary\ChangeLogCoreLibrary.csproj", "{C4ED983B-718C-1332-78A6-4406F989D956}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLogger", "..\ChangeLogGenerator\BaseClassLibrary\BaseLogger\BaseLogger.csproj", "{EE9ED27E-35BE-BA67-970E-46EB19218615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseLogger", "..\ChangeLogGenerator\BaseClassLibrary\BaseLogger\BaseLogger.csproj", "{EE9ED27E-35BE-BA67-970E-46EB19218615}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseClass", "..\ChangeLogGenerator\BaseClassLibrary\BaseClass\BaseClass.csproj", "{33D45254-9361-A636-CDD9-4C40F85FF0F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseClass", "..\ChangeLogGenerator\BaseClassLibrary\BaseClass\BaseClass.csproj", "{33D45254-9361-A636-CDD9-4C40F85FF0F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VMC Unit Tests", "..\VMC Unit Tests\VMC Unit Tests.csproj", "{1DE4693C-08ED-4945-9CC8-36DEC41A1754}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VMC Unit Tests", "..\VMC Unit Tests\VMC Unit Tests.csproj", "{1DE4693C-08ED-4945-9CC8-36DEC41A1754}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Setup Project", "..\Setup Project\Setup Project.wixproj", "{9CCD5CCE-7B29-413A-BD5E-AE0C90AACEA0}"
 EndProject
