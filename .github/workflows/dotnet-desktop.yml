@@ -99,11 +99,10 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Build the test project
-      run: dotnet build ${{ env.Test_Project_Path }} --configuration ${{ matrix.configuration }}
+      run: dotnet build "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }}
 
-    # Execute all unit tests in the solution
-    - name: Execute unit tests
-      run: dotnet test
+    - name: Run tests
+      run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ matrix.configuration }} --no-build --verbosity normal
 
     - name: Build WiX MSI Project
       run: msbuild $env:Wix_Project_Path /p:Configuration=$env:Configuration
