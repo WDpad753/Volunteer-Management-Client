@@ -102,7 +102,7 @@ jobs:
       run: dotnet build "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }}
 
     - name: Run tests
-      run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ matrix.configuration }} --no-build --verbosity normal
+      run: dotnet test "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }} --no-build --verbosity normal
 
     - name: Build WiX MSI Project
       run: msbuild $env:Wix_Project_Path /p:Configuration=$env:Configuration
