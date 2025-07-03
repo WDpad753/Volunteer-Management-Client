@@ -95,13 +95,14 @@ jobs:
 
     # - name: Install WiX 3.11.0.20170506
     #   run: choco install wixtoolset --version=3.11.0.20170506 -y --allow-downgrade --force
-    - name: Install WiX Toolset 3.11
-      run: choco install wixtoolset --version=3.11.0.20170506 -y
-      shell: pwsh
+    - name: Install WiX Toolset 3.14
+      run: choco install wixtoolset --version=3.14.1.20250415 -y
 
-    - name: Set WixTargetsPath environment variable
-      run: echo "WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\Wix.targets" >> $env:GITHUB_ENV
+    - name: Set WiX environment variables
       shell: pwsh
+      run: |
+        echo "WixTargetsPath=C:\\Program Files\\WiX Toolset v3.14\\bin\\Wix.targets" >> $env:GITHUB_ENV
+        echo "WixToolPath=C:\\Program Files\\WiX Toolset v3.14\\bin" >> $env:GITHUB_ENV
       
     - name: Confirm WiX version
       run: |
@@ -109,7 +110,7 @@ jobs:
       shell: powershell
 
     # - name: Set WixTargetsPath environment variable
-    #   run: echo "##[set-env name=WixTargetsPath]C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\"
+    #   run: echo "##[set-env name=WixTargetsPath]C:\\Program Files (x86)\\WiX Toolset v3.14\\bin\\"
     
     # - name: Set WixTargetsPath environment variable
     #   shell: pwsh
