@@ -90,10 +90,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Install WiX Toolset v3.11
-      run: |
-        Invoke-WebRequest -Uri "https://wixtoolset.org/downloads/v3.11.2.4516/wix311.exe" -OutFile "wix311.exe"
-        Start-Process -FilePath ".\wix311.exe" -ArgumentList "/quiet" -Wait
+    - name: Download WiX 3.11 installer
+      run: Invoke-WebRequest -Uri "https://firegiant.com/wix311.exe" -OutFile "wix311.exe"
+    
+    - name: Install WiX 3.11 silently
+      run: Start-Process -FilePath ".\wix311.exe" -ArgumentList "/quiet" -Wait
 
     - name: List WiX files
       shell: pwsh
