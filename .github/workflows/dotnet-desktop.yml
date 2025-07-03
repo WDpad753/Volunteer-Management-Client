@@ -80,9 +80,6 @@ jobs:
         Write-Host "Working dir: $(Get-Location)"
         Get-ChildItem -Force -Recurse
 
-    - name: Restore solution packages
-      run: dotnet restore "${{ env.Solution_Name }}"
-
     # - name: Patch ProjectReference paths
     #   shell: pwsh
     #   run: tools/Patch-ProjectReferences.ps1
@@ -96,6 +93,9 @@ jobs:
     # Install Wix Toolset v3.11
     - name: Install WiX Toolset
       run: choco install wixtoolset -y
+
+    - name: Restore solution packages
+      run: dotnet restore "${{ env.Solution_Name }}"
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
