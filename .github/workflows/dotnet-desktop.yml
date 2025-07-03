@@ -107,23 +107,18 @@ jobs:
         if (-not (Test-Path $dest)) {
           New-Item -ItemType Directory -Path $dest | Out-Null
         }
-        Copy-Item -Path "$PWD\wix314\*" -Destination $dest -Recurse -Force
-
-    - name: List extracted Wix files
-      shell: pwsh
-      run: |
-        Get-ChildItem -Path "${{ github.workspace }}\wix314" -Recurse | Where-Object { -not $_.PSIsContainer } | Select-Object FullName
-
+        Copy-Item -Path "$env:GITHUB_WORKSPACE\wix314\*" -Destination $dest -Recurse -Force
+    
     - name: Set WiX environment variables
       shell: pwsh
       run: |
-        echo "WixToolPath=${{ github.workspace }}\wix314\bin" >> $env:GITHUB_ENV
-        echo "WixTargetsPath=${{ github.workspace }}\wix314\bin\Wix.targets" >> $env:GITHUB_ENV
+        echo "WixToolPath=C:/Program Files (x86)/WiX Toolset v3.14/bin" >> $env:GITHUB_ENV
+        echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/bin/Wix.targets" >> $env:GITHUB_ENV
     
     - name: Verify WiX candle.exe
+      shell: pwsh
       run: |
-        & "${{ github.workspace }}\wix314\bin\candle.exe" -?
-      shell: powershell
+        & "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe" -?
 
     # - name: Set WiX environment variables
     #   shell: pwsh
