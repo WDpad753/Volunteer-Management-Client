@@ -97,7 +97,8 @@ jobs:
       run: choco install wixtoolset --version=3.11.0.20170506 -y --allow-downgrade --force
 
     - name: Confirm WiX version
-      run: '"C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" -?'
+      run: |
+           & "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" -?
       shell: powershell
 
     - name: Set WixTargetsPath environment variable
