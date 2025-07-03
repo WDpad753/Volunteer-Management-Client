@@ -101,8 +101,12 @@ jobs:
            & "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" -?
       shell: powershell
 
+    # - name: Set WixTargetsPath environment variable
+    #   run: echo "##[set-env name=WixTargetsPath]C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\"
     - name: Set WixTargetsPath environment variable
-      run: echo "##[set-env name=WixTargetsPath]C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\"
+      shell: pwsh
+      run: |
+          echo "WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\" >> $env:GITHUB_ENV
 
     - name: Restore solution packages
       run: dotnet restore "${{ env.Solution_Name }}"
