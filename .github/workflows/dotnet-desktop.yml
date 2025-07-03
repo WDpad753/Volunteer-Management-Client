@@ -94,7 +94,7 @@ jobs:
       run: |
         Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314-binaries.zip" -OutFile "wix314.zip"
         Expand-Archive wix314.zip -DestinationPath wix314
-
+        
     - name: Install WiX Toolset
       run: |
            Start-Process msiexec.exe -ArgumentList "/i", "${{ github.workspace }}\wix314\wix314.msi", "/quiet", "/norestart" -Wait
