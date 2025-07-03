@@ -58,15 +58,15 @@ jobs:
     env:
       Solution_Name: Volunteer Management UI\Volunteer Management UI.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
       Test_Project_Path: VMC Unit Tests\VMC Unit Tests.csproj                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-	  Setup_Project_Path: Setup Project\Setup Project.wixproj     # e.g. MyApp.Setup\MyApp.Setup.vdproj
+      Setup_Project_Path: Setup Project\Setup Project.wixproj     # e.g. MyApp.Setup\MyApp.Setup.vdproj
       Setup_Output_Folder: Installs                   # Relative path to where the MSI is output
     
-	steps:
+    steps:
     - name: Checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-		submodules: recursive
+	submodules: recursive
 
     - name: Checkout submodules
       run: git submodule update --init --recursive 
