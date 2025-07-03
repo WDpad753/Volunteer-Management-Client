@@ -92,7 +92,7 @@ jobs:
 
     # Install Wix Toolset v3.11
     - name: Install WiX Toolset
-      run: choco install wixtoolset -y
+      run: choco install wixtoolset --version=3.11.2.4516 -y
 
     - name: Restore solution packages
       run: dotnet restore "${{ env.Solution_Name }}"
