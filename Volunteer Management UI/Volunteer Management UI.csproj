@@ -52,20 +52,17 @@
 		<ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
 	</ItemGroup>
 
-		<Target Name="PostBuildCleanup" AfterTargets="PostBuildEvent">
-			<!-- Deletes any files that start with ChangeLog in the output directory -->
-			<ItemGroup>
-				<UnwantedFiles Include="$(TargetDir)ChangeLog*" />
-			</ItemGroup>
-
-			<Delete Files="@(UnwantedFiles)" />
-		</Target>
-
 		<Target Name="PostBuildCleanup" AfterTargets="Build">
+			<!-- Remove files starting with "ChangeLog" from the output directory -->
+			<!-- Build output directory -->
+			<PropertyGroup>
+				<BuildOutputDir>$(MSBuildProjectDirectory)\bin\$(Configuration)\$(OutputFramework)\</BuildOutputDir>
+			</PropertyGroup>
+
+			<!-- Remove files starting with "ChangeLog" -->
 			<ItemGroup>
-				<UnwantedFiles Include="$(TargetDir)ChangeLog*" />
+				<UnwantedFiles Include="$(BuildOutputDir)ChangeLog*" />
 			</ItemGroup>
 			<Delete Files="@(UnwantedFiles)" />
 		</Target>
-		
 	</Project>
