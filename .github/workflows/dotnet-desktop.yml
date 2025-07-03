@@ -184,9 +184,7 @@ jobs:
       run: dotnet test "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }} --no-build --verbosity normal
     
     - name: Build WiX MSI Project
-      run: msbuild "${{ env.Setup_Project_Path }}" /p:Configuration=$env:Configuration /p:Platform="Any CPU"
-      env:
-        Configuration: ${{ matrix.configuration }}
+      run: msbuild "${{ env.Setup_Project_Path }}" /p:Configuration=${{ matrix.configuration }} /p:Platform=x86
     
     - name: Upload MSI Installer
       uses: actions/upload-artifact@v4
