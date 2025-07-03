@@ -57,6 +57,7 @@ jobs:
 
     env:
       Solution_Name: 'Volunteer Management UI\Volunteer Management UI.sln'
+      Main_Project_Path: 'Volunteer Management UI\Volunteer Management UI.csproj'
       Test_Project_Path: 'VMC Unit Tests\VMC Unit Tests.csproj'
       Setup_Project_Path: 'Setup Project\Setup Project.wixproj'
       Setup_Output_Folder: "Installs"
@@ -160,11 +161,17 @@ jobs:
     # - name: Verify Wix.targets exists
     #   run: if not exist "C:\Program Files (x86)\WiX Toolset v3.14\Wix.targets" (exit 1)
     
-    - name: Restore solution packages
-      run: dotnet restore "${{ env.Solution_Name }}"
+    # - name: Restore solution packages
+    #   run: dotnet restore "${{ env.Solution_Name }}"
 
-    - name: Build the full solution (including UI)
-      run: dotnet build "${{ env.Solution_Name }}" --configuration ${{ matrix.configuration }}
+    # - name: Build the full solution (including UI)
+    #   run: dotnet build "${{ env.Solution_Name }}" --configuration ${{ matrix.configuration }}
+
+    - name: Restore main project packages
+      run: dotnet restore "${{ env.Main_Project_Path }}"
+    
+    - name: Build main project
+      run: dotnet build "${{ env.Main_Project_Path }}" --configuration ${{ matrix.configuration }}
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
