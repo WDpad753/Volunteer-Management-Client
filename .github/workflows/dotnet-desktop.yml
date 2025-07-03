@@ -108,12 +108,18 @@ jobs:
           New-Item -ItemType Directory -Path $dest | Out-Null
         }
         Copy-Item -Path "$env:GITHUB_WORKSPACE\wix314\*" -Destination $dest -Recurse -Force
+
+    - name: Dump WiX bin directory tree
+      shell: pwsh
+      run: |
+        Write-Host "Listing files in C:\Program Files (x86)\WiX Toolset v3.14\bin"
+        Get-ChildItem -Path "C:\Program Files (x86)\WiX Toolset v3.14\bin" -Recurse | Format-Table -AutoSize
     
     - name: Set WiX environment variables
       shell: pwsh
       run: |
         echo "WixToolPath=C:/Program Files (x86)/WiX Toolset v3.14/bin" >> $env:GITHUB_ENV
-        echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/bin/Wix.targets" >> $env:GITHUB_ENV
+        echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/bin/wix.targets" >> $env:GITHUB_ENV
     
     - name: Verify WiX candle.exe
       shell: pwsh
