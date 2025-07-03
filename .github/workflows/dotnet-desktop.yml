@@ -186,11 +186,9 @@ jobs:
     - name: Build WiX MSI Project
       run: msbuild "${{ env.Setup_Project_Path }}" /p:Configuration=${{ matrix.configuration }} /p:Platform=x86
 
-    - name: List Installs folder
-      run: dir Installs
-
-    - name: List MSI files in bin folder
-      run: dir bin\${{ matrix.configuration }}\en-us
+    - name: List all files in repo
+      run: Get-ChildItem -Recurse
+      shell: pwsh
   
     - name: Upload MSI Installer
       uses: actions/upload-artifact@v4
