@@ -124,7 +124,7 @@
 		<Message Text="Resolved Assembly Version: $(AssemblyVersionNumber)" Importance="high" />
 
 		<Exec Command='if not exist "Installs" mkdir "Installs"' />
-		<Exec Command='if exist "bin\$(Configuration)\$(Culture)\$(OutputName).msi" (echo Found MSI) else (echo NOT FOUND: bin\$(Configuration)\$(Culture)\$(OutputName).msi)' />
+		<Exec Command='if exist "bin\$(Configuration)\en-us\$(OutputName).msi" (echo Found MSI) else (echo NOT FOUND: bin\$(Configuration)\en-us\$(OutputName).msi)' />
 		<Exec Command='move "bin\$(Configuration)\en-us\$(OutputName).msi" "Installs\Volunteer Management UI-%(AssemblyVersion.Version)-$(Configuration).msi"' />
 		<!--<Exec Command='move "bin\$(Configuration)\$(OutputName).msi" "Installs\Volunteer Management UI-%(AssemblyVersion.Version)-$(Configuration).msi"' /> -->
 	</Target>

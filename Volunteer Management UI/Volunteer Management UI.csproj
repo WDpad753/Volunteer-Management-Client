@@ -47,8 +47,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseClass\BaseClass.csproj" />
-		<ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
 		<ProjectReference Include="..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj" />
 		<ProjectReference Include="..\ChangeLogGenerator\ChangeLogCoreLibrary\ChangeLogCoreLibrary.csproj" />
 		<ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />

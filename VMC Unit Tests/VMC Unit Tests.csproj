@@ -19,11 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseClass\BaseClass.csproj" />
-    <ProjectReference Include="..\ChangeLogGenerator\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
