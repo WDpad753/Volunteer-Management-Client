@@ -60,7 +60,7 @@ jobs:
       Main_Project_Path: 'Volunteer Management UI\Volunteer Management UI.csproj'
       Test_Project_Path: 'VMC Unit Tests\VMC Unit Tests.csproj'
       Setup_Project_Path: 'Setup Project\Setup Project.wixproj'
-      Setup_Output_Folder: "Installs"
+      Setup_Output_Folder: 'Setup Project\Installs'
     
     steps:
     - name: Checkout
