@@ -90,28 +90,25 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Download WiX Toolset 3.14 Full Installer MSI
+    - name: Install WiX Toolset v3.11
       run: |
-        Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314.msi" -OutFile "wix314.msi"
-    
-    - name: Install WiX Toolset
-      run: |
-        Start-Process msiexec.exe -ArgumentList "/i", "$(pwd)/wix314.msi", "/quiet", "/norestart" -Wait
+        Invoke-WebRequest -Uri "https://wixtoolset.org/downloads/v3.11.2.4516/wix311.exe" -OutFile "wix311.exe"
+        Start-Process -FilePath ".\wix311.exe" -ArgumentList "/quiet" -Wait
 
     - name: List WiX files
       shell: pwsh
       run: |
-        Get-ChildItem "C:\Program Files (x86)\WiX Toolset v3.14" -Recurse | Select-Object -ExpandProperty FullName
+        Get-ChildItem "C:\Program Files (x86)\WiX Toolset v3.11" -Recurse | Select-Object -ExpandProperty FullName
 
     - name: Set WiX environment variables
       shell: pwsh
       run: |
-           echo "WixTargetsPath=C:\\Program Files (x86)\\WiX Toolset v3.14\\Wix.targets" >> $env:GITHUB_ENV
-           echo "WixToolPath=C:\\Program Files (x86)\\WiX Toolset v3.14\\bin" >> $env:GITHUB_ENV
+           echo "WixTargetsPath=C:\\Program Files (x86)\\WiX Toolset v3.11\\Wix.targets" >> $env:GITHUB_ENV
+           echo "WixToolPath=C:\\Program Files (x86)\\WiX Toolset v3.11\\bin" >> $env:GITHUB_ENV
       
     - name: Confirm WiX version
       run: |
-           & "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe" -?
+           & "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" -?
       shell: powershell
 
     # - name: Set WixTargetsPath environment variable
