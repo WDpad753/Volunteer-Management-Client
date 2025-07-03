@@ -90,13 +90,14 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    # - name: Uninstall existing WiX toolset
-    #   run: choco uninstall wixtoolset -y || echo "No WiX installed"
+    - name: Download WiX Toolset 3.14 MSI
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314-binaries.zip" -OutFile "wix314.zip"
+        Expand-Archive wix314.zip -DestinationPath wix314
 
-    # - name: Install WiX 3.11.0.20170506
-    #   run: choco install wixtoolset --version=3.11.0.20170506 -y --allow-downgrade --force
-    - name: Install WiX Toolset 3.14
-      run: choco install wixtoolset --version=3.14.1.20250415 -y --force
+    - name: Install WiX Toolset
+      run: |
+           Start-Process msiexec.exe -ArgumentList "/i", "${{ github.workspace }}\wix314\wix314.msi", "/quiet", "/norestart" -Wait
 
     - name: List WiX files
       shell: pwsh
