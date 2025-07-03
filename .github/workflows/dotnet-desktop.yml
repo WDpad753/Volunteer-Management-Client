@@ -101,8 +101,8 @@ jobs:
     - name: Set WiX environment variables
       shell: pwsh
       run: |
-        echo "WixTargetsPath=C:\\Program Files\\WiX Toolset v3.14\\bin\\Wix.targets" >> $env:GITHUB_ENV
-        echo "WixToolPath=C:\\Program Files\\WiX Toolset v3.14\\bin" >> $env:GITHUB_ENV
+           echo "WixTargetsPath=C:\\Program Files (x86)\\WiX Toolset v3.14\\Wix.targets" >> $env:GITHUB_ENV
+           echo "WixToolPath=C:\\Program Files (x86)\\WiX Toolset v3.14\\bin" >> $env:GITHUB_ENV
       
     - name: Confirm WiX version
       run: |
