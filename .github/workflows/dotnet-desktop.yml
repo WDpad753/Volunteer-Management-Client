@@ -90,9 +90,17 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    # Install Wix Toolset v3.11
-    - name: Install WiX Toolset
-      run: choco install wixtoolset --version=3.11.2 -y --allow-downgrade --force
+    - name: Uninstall existing WiX toolset
+      run: choco uninstall wixtoolset -y || echo "No WiX installed"
+
+    - name: Install WiX 3.11.0.20170506
+      run: choco install wixtoolset --version=3.11.0.20170506 -y --allow-downgrade --force
+
+    - name: Confirm WiX version
+      run: candle.exe -?
+
+    - name: Set WixTargetsPath environment variable
+      run: echo "##[set-env name=WixTargetsPath]C:\\Program Files (x86)\\WiX Toolset v3.11\\bin\\"
 
     - name: Restore solution packages
       run: dotnet restore "${{ env.Solution_Name }}"
