@@ -106,7 +106,7 @@ jobs:
       
     - name: Confirm WiX version
       run: |
-           & "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" -?
+           & "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe" -?
       shell: powershell
 
     # - name: Set WixTargetsPath environment variable
