@@ -54,15 +54,11 @@
 
 		<Target Name="PostBuildCleanup" AfterTargets="Build">
 			<!-- Remove files starting with "ChangeLog" from the output directory -->
-			<!-- Build output directory -->
-			<PropertyGroup>
-				<BuildOutputDir>$(MSBuildProjectDirectory)\bin\$(Configuration)\$(OutputFramework)\</BuildOutputDir>
-			</PropertyGroup>
-
-			<!-- Remove files starting with "ChangeLog" -->
-			<ItemGroup>
-				<UnwantedFiles Include="$(BuildOutputDir)ChangeLog*" />
-			</ItemGroup>
-			<Delete Files="@(UnwantedFiles)" />
+				<Message Text="TargetDir = $(TargetDir)" Importance="high" />
+				<ItemGroup>
+					<UnwantedFiles Include="$(TargetDir)ChangeLog*" />
+				</ItemGroup>
+				<Message Text="Files to delete: @(UnwantedFiles)" Importance="high" />
+				<Delete Files="@(UnwantedFiles)" />
 		</Target>
 	</Project>
