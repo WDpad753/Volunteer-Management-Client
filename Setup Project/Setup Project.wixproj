@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>Setup_Project</OutputName>
     <OutputType>Package</OutputType>
-	<BasePath>..\Volunteer Management UI\bin\$(Configuration)\net8.0-windows\</BasePath>
+    <BasePath>..\Volunteer Management UI\bin\$(Configuration)\net8.0-windows\</BasePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -54,19 +54,17 @@
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
   </ItemGroup>
-
-    <PropertyGroup>
-      <LightAdditionalOptions>-nologo -sval</LightAdditionalOptions>
-    </PropertyGroup>
-	
+  <PropertyGroup>
+    <LightAdditionalOptions>-nologo -sval</LightAdditionalOptions>
+  </PropertyGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />
   <!--<Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
     <Error Text="The WiX Toolset v3.11 build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/v3.11/stable" />
   </Target>-->
-	<Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
-		<Message Text="Warning: WiX Toolset not detected via $(WixTargetsPath) or MSBuildExtensionsPath32. Ensure it is installed." Importance="high" />
-	</Target>
+  <Target Name="EnsureWixToolsetInstalled" Condition=" '$(WixTargetsImported)' != 'true' ">
+    <Message Text="Warning: WiX Toolset not detected via $(WixTargetsPath) or MSBuildExtensionsPath32. Ensure it is installed." Importance="high" />
+  </Target>
   <Target Name="BeforeBuild">
     <!-- Create a Fresh Build by removing old one and build a new one -->
     <!-- Check if the configuration is Release -->
@@ -89,20 +87,9 @@
 	  </DefineConstants>
       <RunWixToolsOutOfProc Condition=" '$(PROCESSOR_ARCHITECTURE)'!='x86' ">true</RunWixToolsOutOfProc>
     </PropertyGroup>
-    <HeatDirectory OutputFile="ComponentsGenerated.wxs"
-				   DirectoryRefID="INSTALLFOLDER"
-				   ComponentGroupName="PublishedComponents"
-				   SuppressCom="true"
-				   Directory="$(BasePath)"
-				   SuppressFragments="true" 
-                   SuppressRegistry="true" 
-				   SuppressRootDirectory="true" 
-				   AutoGenerateGuids="false" 
-				   GenerateGuidsNow="true" 
-				   ToolPath="$(WixToolPath)" 
-				   PreprocessorVariable="var.BasePath" 
-				   RunAsSeparateProcess="$(RunWixToolsOutOfProc)" />
-	  <!--Directory="..\Volunteer Management UI\bin\$(Configuration)\net8.0-windows" -->
+    <HeatDirectory OutputFile="ComponentsGenerated.wxs" DirectoryRefID="INSTALLFOLDER" ComponentGroupName="PublishedComponents" SuppressCom="true" Directory="$(BasePath)" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" AutoGenerateGuids="false" GenerateGuidsNow="true" ToolPath="$(WixToolPath)" PreprocessorVariable="var.BasePath" RunAsSeparateProcess="$(RunWixToolsOutOfProc)" />
+    <!--RunAsSeparateProcess="$(RunWixToolsOutOfProc)" />-->
+    <!--Directory="..\Volunteer Management UI\bin\$(Configuration)\net8.0-windows" -->
   </Target>
   <!--<Target Name="AfterBuild">
     To Create a new Directory for saving each MSI build and save it in the Install folder 
@@ -114,21 +101,17 @@
     <Exec Command="if not exist Installs mkdir Installs" />
     <Exec Command="move bin\$(Configuration)\$(OutputName).msi Installs\Volunteer Management UI-%(AssemblyVersion.Version)-$(Configuration).msi" />
   </Target>-->
-
-	<Target Name="AfterBuild">
-		<GetAssemblyIdentity AssemblyFiles="..\Volunteer Management UI\bin\$(Configuration)\net8.0-windows\Volunteer Management UI.dll">
-			<Output TaskParameter="Assemblies" ItemName="AssemblyVersion" />
-		</GetAssemblyIdentity>
-
-		<PropertyGroup>
-			<AssemblyVersionNumber>$([System.Version]::Parse('%(AssemblyVersion.Version)').ToString())</AssemblyVersionNumber>
-		</PropertyGroup>
-
-		<Message Text="Resolved Assembly Version: $(AssemblyVersionNumber)" Importance="high" />
-
-		<Exec Command='if not exist "Installs" mkdir "Installs"' />
-		<Exec Command='if exist "bin\$(Configuration)\en-us\$(OutputName).msi" (echo Found MSI) else (echo NOT FOUND: bin\$(Configuration)\en-us\$(OutputName).msi)' />
-		<Exec Command='move "bin\$(Configuration)\en-us\$(OutputName).msi" "Installs\Volunteer Management UI-%(AssemblyVersion.Version)-$(Configuration).msi"' />
-		<!--<Exec Command='move "bin\$(Configuration)\$(OutputName).msi" "Installs\Volunteer Management UI-%(AssemblyVersion.Version)-$(Configuration).msi"' /> -->
-	</Target>
+  <Target Name="AfterBuild">
+    <GetAssemblyIdentity AssemblyFiles="..\Volunteer Management UI\bin\$(Configuration)\net8.0-windows\Volunteer Management UI.dll">
+      <Output TaskParameter="Assemblies" ItemName="AssemblyVersion" />
+    </GetAssemblyIdentity>
+    <PropertyGroup>
+      <AssemblyVersionNumber>$([System.Version]::Parse('%(AssemblyVersion.Version)').ToString())</AssemblyVersionNumber>
+    </PropertyGroup>
+    <Message Text="Resolved Assembly Version: $(AssemblyVersionNumber)" Importance="high" />
+    <Exec Command="if not exist &quot;Installs&quot; mkdir &quot;Installs&quot;" />
+    <Exec Command="if exist &quot;bin\$(Configuration)\en-us\$(OutputName).msi&quot; (echo Found MSI) else (echo NOT FOUND: bin\$(Configuration)\en-us\$(OutputName).msi)" />
+    <Exec Command="move &quot;bin\$(Configuration)\en-us\$(OutputName).msi&quot; &quot;Installs\Volunteer Management UI-%(AssemblyVersion.Version)-$(Configuration).msi&quot;" />
+    <!--<Exec Command='move "bin\$(Configuration)\$(OutputName).msi" "Installs\Volunteer Management UI-%(AssemblyVersion.Version)-$(Configuration).msi"' /> -->
+  </Target>
 </Project>
