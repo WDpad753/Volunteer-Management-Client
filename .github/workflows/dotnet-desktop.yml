@@ -90,12 +90,19 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Uninstall existing WiX toolset
-      run: choco uninstall wixtoolset -y || echo "No WiX installed"
+    # - name: Uninstall existing WiX toolset
+    #   run: choco uninstall wixtoolset -y || echo "No WiX installed"
 
-    - name: Install WiX 3.11.0.20170506
-      run: choco install wixtoolset --version=3.11.0.20170506 -y --allow-downgrade --force
+    # - name: Install WiX 3.11.0.20170506
+    #   run: choco install wixtoolset --version=3.11.0.20170506 -y --allow-downgrade --force
+    - name: Install WiX Toolset 3.11
+      run: choco install wixtoolset --version=3.11.0.20170506 -y
+      shell: pwsh
 
+    - name: Set WixTargetsPath environment variable
+      run: echo "WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\Wix.targets" >> $env:GITHUB_ENV
+      shell: pwsh
+      
     - name: Confirm WiX version
       run: |
            & "C:\Program Files (x86)\WiX Toolset v3.11\bin\candle.exe" -?
@@ -108,10 +115,11 @@ jobs:
     #   shell: pwsh
     #   run: |
     #       echo 'WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\' >> $env:GITHUB_ENV
-    - name: Set WiX Targets Path
-      shell: pwsh
-      run: |
-         echo 'WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\Wix.targets' >> $env:GITHUB_ENV
+    
+    # - name: Set WiX Targets Path
+    #   shell: pwsh
+    #   run: |
+    #      echo 'WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\Wix.targets' >> $env:GITHUB_ENV
     
     - name: Restore solution packages
       run: dotnet restore "${{ env.Solution_Name }}"
