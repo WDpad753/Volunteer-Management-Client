@@ -125,7 +125,8 @@ jobs:
       shell: pwsh
       run: |
         echo "WixToolPath=C:/Program Files (x86)/WiX Toolset v3.14/bin" >> $env:GITHUB_ENV
-        echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/bin/wix.targets" >> $env:GITHUB_ENV
+        echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/wix.targets" >> $env:GITHUB_ENV
+        # echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/bin/wix.targets" >> $env:GITHUB_ENV
     
     - name: Verify WiX candle.exe
       shell: pwsh
