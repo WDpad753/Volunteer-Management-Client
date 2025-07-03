@@ -97,7 +97,12 @@ jobs:
     - name: Extract WiX binaries
       run: |
         Expand-Archive -Path wix314-binaries.zip -DestinationPath wix314
-    
+
+    - name: List extracted Wix files
+      shell: pwsh
+      run: |
+        Get-ChildItem -Path "${{ github.workspace }}\wix314" -Recurse | Where-Object { -not $_.PSIsContainer } | Select-Object FullName
+
     - name: Set WiX environment variables
       shell: pwsh
       run: |
