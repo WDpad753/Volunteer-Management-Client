@@ -193,7 +193,7 @@ jobs:
     - name: Upload MSI Installer
       uses: actions/upload-artifact@v4
       with:
-        name: MSI Installer
+        name: MSI-Installer-${{ matrix.configuration }}
         path: ${{ env.Setup_Output_Folder }}\*.msi
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
