@@ -96,7 +96,7 @@ jobs:
     # - name: Install WiX 3.11.0.20170506
     #   run: choco install wixtoolset --version=3.11.0.20170506 -y --allow-downgrade --force
     - name: Install WiX Toolset 3.14
-      run: choco install wixtoolset --version=3.14.1.20250415 -y
+      run: choco install wixtoolset --version=3.14.1.20250415 -y --force
 
     - name: List WiX files
       shell: pwsh
