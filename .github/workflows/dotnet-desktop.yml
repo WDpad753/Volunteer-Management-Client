@@ -80,6 +80,9 @@ jobs:
         Write-Host "Working dir: $(Get-Location)"
         Get-ChildItem -Force -Recurse
 
+    - name: Restore solution packages
+      run: dotnet restore "${{ env.Solution_Name }}"
+
     # - name: Patch ProjectReference paths
     #   shell: pwsh
     #   run: tools/Patch-ProjectReferences.ps1
