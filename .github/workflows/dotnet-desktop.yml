@@ -98,8 +98,10 @@ jobs:
     - name: Install WiX Toolset 3.14
       run: choco install wixtoolset --version=3.14.1.20250415 -y
 
-    - name: Debug WiX files
-      run: dir "C:\Program Files (x86)\WiX Toolset v3.14" /b /s
+    - name: List WiX files
+      shell: pwsh
+      run: |
+        Get-ChildItem "C:\Program Files (x86)\WiX Toolset v3.14" -Recurse | Select-Object -ExpandProperty FullName
 
     - name: Set WiX environment variables
       shell: pwsh
