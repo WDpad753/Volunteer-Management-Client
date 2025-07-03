@@ -92,12 +92,7 @@ jobs:
 
     # Install Wix Toolset v3.11
     - name: Install WiX Toolset
-      run: |
-        Invoke-WebRequest -Uri https://wixtoolset.org/downloads/v3.11.2.4516/wix311-binaries.zip -OutFile wix.zip
-        Expand-Archive wix.zip -DestinationPath "$env:ProgramFiles\WiX Toolset 3.11"
-        $env:WIX = "$env:ProgramFiles\WiX Toolset 3.11"
-        echo "##[add-path]$env:WIX"  # GitHub Actions v2 only - GitHub deprecated this in favor of `path` key
-        echo "$env:WIX" | Out-File -Append -FilePath $env:GITHUB_PATH
+      run: choco install wixtoolset -y
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
