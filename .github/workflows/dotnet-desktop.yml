@@ -56,10 +56,10 @@ jobs:
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
-      Solution_Name: Volunteer Management UI\Volunteer Management UI.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: VMC Unit Tests\VMC Unit Tests.csproj                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Setup_Project_Path: Setup Project\Setup Project.wixproj     # e.g. MyApp.Setup\MyApp.Setup.vdproj
-      Setup_Output_Folder: Installs                   # Relative path to where the MSI is output
+      Solution_Name: 'Volunteer Management UI\Volunteer Management UI.sln'
+      Test_Project_Path: 'VMC Unit Tests\VMC Unit Tests.csproj'
+      Setup_Project_Path: 'Setup Project\Setup Project.wixproj'
+      Setup_Output_Folder: "Installs"
     
     steps:
     - name: Checkout
@@ -177,7 +177,7 @@ jobs:
       run: dotnet test "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }} --no-build --verbosity normal
     
     - name: Build WiX MSI Project
-      run: msbuild $env:Setup_Project_Path /p:Configuration=$env:Configuration /p:Platform="Any CPU"
+      run: msbuild "${{ env.Setup_Project_Path }}" /p:Configuration=$env:Configuration /p:Platform="Any CPU"
       env:
         Configuration: ${{ matrix.configuration }}
     
@@ -185,10 +185,10 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: MSI Installer
-        path: ${{ env.Setup_Output_Dir }}\*.msi
+        path: ${{ env.Setup_Output_Folder }}\*.msi
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+      run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
       env:
         Configuration: ${{ matrix.configuration }}
