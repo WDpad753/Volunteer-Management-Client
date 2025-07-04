@@ -47,13 +47,13 @@ on:
 jobs:
 
   build:
-
+    if: github.actor == github.repository_owner
+    runs-on: windows-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    
     strategy:
       matrix:
         configuration: [Debug, Release]
-
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
 
     env:
       Solution_Name: 'Volunteer Management UI\Volunteer Management UI.sln'
@@ -63,171 +63,136 @@ jobs:
       Setup_Output_Folder: 'Setup Project\Installs'
     
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        submodules: recursive
-
-    - name: Checkout submodules
-      run: git submodule update --init --recursive 
-
-    - name: Update the submodules
-      run: git submodule update --remote
-
-    - name: Dump directory tree
-      shell: powershell
-      run: |
-        Write-Host "Working dir: $(Get-Location)"
-        Get-ChildItem -Force -Recurse
-
-    # - name: Patch ProjectReference paths
-    #   shell: pwsh
-    #   run: tools/Patch-ProjectReferences.ps1
-
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-
-    - name: Download WiX Toolset binaries
-      shell: pwsh
-      run: |
-        Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314-binaries.zip" -OutFile "wix314-binaries.zip"
     
-    - name: Extract WiX binaries
-      shell: pwsh
-      run: |
-        Expand-Archive -Path wix314-binaries.zip -DestinationPath wix314
-    
-    - name: Copy WiX binaries to Program Files (x86)
-      shell: pwsh
-      run: |
-        $dest = "C:\Program Files (x86)\WiX Toolset v3.14"
-        if (-not (Test-Path $dest)) {
-          New-Item -ItemType Directory -Path $dest | Out-Null
-        }
-        Copy-Item -Path "$env:GITHUB_WORKSPACE\wix314\*" -Destination $dest -Recurse -Force
+        - name: Run Owner
+            run: echo "This job is running because the workflow was triggered by the repository owner"
+        
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+            submodules: recursive
 
-    # - name: Dump WiX bin directory tree
-    #   shell: pwsh
-    #   run: |
-    #     Write-Host "Listing files in C:\Program Files (x86)\WiX Toolset v3.14\bin"
-    #     Get-ChildItem -Path "C:\Program Files (x86)\WiX Toolset v3.14\bin" -Recurse | Format-Table -AutoSize
+        - name: Checkout submodules
+          run: git submodule update --init --recursive 
 
-    - name: Dump full WiX folder tree
-      shell: pwsh
-      run: |
-        Write-Host "Listing full WiX Toolset directory tree:"
-        tree "C:\Program Files (x86)\WiX Toolset v3.14" /F /A
-    
-    - name: Set WiX environment variables
-      shell: pwsh
-      run: |
-        echo "WixToolPath=C:/Program Files (x86)/WiX Toolset v3.14/bin" >> $env:GITHUB_ENV
-        echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/wix.targets" >> $env:GITHUB_ENV
-        # echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/bin/wix.targets" >> $env:GITHUB_ENV
-    
-    - name: Verify WiX candle.exe
-      shell: pwsh
-      run: |
-        & "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe" -?
+        - name: Update the submodules
+          run: git submodule update --remote
 
-    # - name: Set WiX environment variables
-    #   shell: pwsh
-    #   run: |
-    #        echo "WixTargetsPath=C:\\Program Files (x86)\\WiX Toolset v3.14\\Wix.targets" >> $env:GITHUB_ENV
-    #        echo "WixToolPath=C:\\Program Files (x86)\\WiX Toolset v3.14\\bin" >> $env:GITHUB_ENV
+        - name: Dump directory tree
+          shell: powershell
+          run: |
+            Write-Host "Working dir: $(Get-Location)"
+            Get-ChildItem -Force -Recurse
+
+        # - name: Patch ProjectReference paths
+        #   shell: pwsh
+        #   run: tools/Patch-ProjectReferences.ps1
+
+        # Install the .NET Core workload
+        - name: Install .NET Core
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: 8.0.x
+
+        - name: Download WiX Toolset binaries
+          shell: pwsh
+          run: |
+            Invoke-WebRequest -Uri "https://github.com/wixtoolset/wix3/releases/download/wix3141rtm/wix314-binaries.zip" -OutFile "wix314-binaries.zip"
+        
+        - name: Extract WiX binaries
+          shell: pwsh
+          run: |
+            Expand-Archive -Path wix314-binaries.zip -DestinationPath wix314
+        
+        - name: Copy WiX binaries to Program Files (x86)
+          shell: pwsh
+          run: |
+            $dest = "C:\Program Files (x86)\WiX Toolset v3.14"
+            if (-not (Test-Path $dest)) {
+              New-Item -ItemType Directory -Path $dest | Out-Null
+            }
+            Copy-Item -Path "$env:GITHUB_WORKSPACE\wix314\*" -Destination $dest -Recurse -Force
+
+        - name: Dump full WiX folder tree
+          shell: pwsh
+          run: |
+            Write-Host "Listing full WiX Toolset directory tree:"
+            tree "C:\Program Files (x86)\WiX Toolset v3.14" /F /A
+        
+        - name: Set WiX environment variables
+          shell: pwsh
+          run: |
+            echo "WixToolPath=C:/Program Files (x86)/WiX Toolset v3.14/bin" >> $env:GITHUB_ENV
+            echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/wix.targets" >> $env:GITHUB_ENV
+            # echo "WixTargetsPath=C:/Program Files (x86)/WiX Toolset v3.14/bin/wix.targets" >> $env:GITHUB_ENV
+        
+        - name: Verify WiX candle.exe
+          shell: pwsh
+          run: |
+            & "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe" -?
+
+        - name: Restore main project packages
+          run: dotnet restore "${{ env.Main_Project_Path }}"
+        
+        - name: Build main project
+          run: dotnet build "${{ env.Main_Project_Path }}" --configuration ${{ matrix.configuration }}
+
+        # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+        - name: Setup MSBuild.exe
+          uses: microsoft/setup-msbuild@v2
+
+        - name: Build the test project
+          run: dotnet build "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }}
+
+        - name: Run tests
+          run: dotnet test "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }} --no-build --verbosity normal
+        
+        - name: Build WiX MSI Project
+          run: msbuild "${{ env.Setup_Project_Path }}" /p:Configuration=${{ matrix.configuration }} /p:Platform=x86
+
+        - name: List all files in repo
+          run: Get-ChildItem -Recurse
+          shell: pwsh
       
-    # - name: Confirm WiX version
-    #   run: |
-    #        & "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe" -?
-    #   shell: powershell
+        - name: Upload MSI Installer
+          uses: actions/upload-artifact@v4
+          with:
+            name: MSI-Installer-${{ matrix.configuration }}
+            path: ${{ env.Setup_Output_Folder }}\*.msi
 
-    # - name: Set WixTargetsPath environment variable
-    #   run: echo "##[set-env name=WixTargetsPath]C:\\Program Files (x86)\\WiX Toolset v3.14\\bin\\"
-    
-    # - name: Set WixTargetsPath environment variable
-    #   shell: pwsh
-    #   run: |
-    #       echo 'WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\' >> $env:GITHUB_ENV
-    
-    # - name: Set WiX Targets Path
-    #   shell: pwsh
-    #   run: |
-    #      echo 'WixTargetsPath=C:\Program Files (x86)\WiX Toolset v3.11\bin\Wix.targets' >> $env:GITHUB_ENV
+        # - name: Find MSI installer
+        #   id: find_msi
+        #   env:
+        #     SETUP_OUTPUT_FOLDER: ${{ env.Setup_Output_Folder }}
+        #   run: |
+        #     $msi = Get-ChildItem -Path "$env:SETUP_OUTPUT_FOLDER" -Filter *.msi | Select-Object -First 1
+        #     echo "MSI_PATH=$($msi.FullName)" >> $GITHUB_OUTPUT
+        #   shell: pwsh
 
-    # - name: Verify Wix.targets exists
-    #   run: if not exist "C:\Program Files (x86)\WiX Toolset v3.14\Wix.targets" (exit 1)
-    
-    # - name: Restore solution packages
-    #   run: dotnet restore "${{ env.Solution_Name }}"
+        # - name: Create GitHub Release
+        #   id: create_release
+        #   uses: actions/create-release@v1
+        #   with:
+        #     tag_name: ${{ github.ref_name }}
+        #     release_name: Release ${{ github.ref_name }}
+        #     draft: false
+        #     prerelease: false
+        #   env:
+        #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        
+        # - name: Upload MSI to Release
+        #   uses: actions/upload-release-asset@v1
+        #   with:
+        #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+        #     asset_path: ${{ steps.find_msi.outputs.MSI_PATH }}  # Update with your actual MSI path & filename
+        #     asset_name: 'VolunteerManagementUI.msi'
+        #     asset_content_type: application/octet-stream
+        #   env:
+        #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
-    # - name: Build the full solution (including UI)
-    #   run: dotnet build "${{ env.Solution_Name }}" --configuration ${{ matrix.configuration }}
-
-    - name: Restore main project packages
-      run: dotnet restore "${{ env.Main_Project_Path }}"
-    
-    - name: Build main project
-      run: dotnet build "${{ env.Main_Project_Path }}" --configuration ${{ matrix.configuration }}
-
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
-
-    - name: Build the test project
-      run: dotnet build "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }}
-
-    - name: Run tests
-      run: dotnet test "${{ env.Test_Project_Path }}" --configuration ${{ matrix.configuration }} --no-build --verbosity normal
-    
-    - name: Build WiX MSI Project
-      run: msbuild "${{ env.Setup_Project_Path }}" /p:Configuration=${{ matrix.configuration }} /p:Platform=x86
-
-    - name: List all files in repo
-      run: Get-ChildItem -Recurse
-      shell: pwsh
-  
-    - name: Upload MSI Installer
-      uses: actions/upload-artifact@v4
-      with:
-        name: MSI-Installer-${{ matrix.configuration }}
-        path: ${{ env.Setup_Output_Folder }}\*.msi
-
-    # - name: Find MSI installer
-    #   id: find_msi
-    #   env:
-    #     SETUP_OUTPUT_FOLDER: ${{ env.Setup_Output_Folder }}
-    #   run: |
-    #     $msi = Get-ChildItem -Path "$env:SETUP_OUTPUT_FOLDER" -Filter *.msi | Select-Object -First 1
-    #     echo "MSI_PATH=$($msi.FullName)" >> $GITHUB_OUTPUT
-    #   shell: pwsh
-
-    # - name: Create GitHub Release
-    #   id: create_release
-    #   uses: actions/create-release@v1
-    #   with:
-    #     tag_name: ${{ github.ref_name }}
-    #     release_name: Release ${{ github.ref_name }}
-    #     draft: false
-    #     prerelease: false
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-    
-    # - name: Upload MSI to Release
-    #   uses: actions/upload-release-asset@v1
-    #   with:
-    #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-    #     asset_path: ${{ steps.find_msi.outputs.MSI_PATH }}  # Update with your actual MSI path & filename
-    #     asset_name: 'VolunteerManagementUI.msi'
-    #     asset_content_type: application/octet-stream
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+        # Restore the application to populate the obj folder with RuntimeIdentifiers
+        - name: Restore the application
+          run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
+          env:
+            Configuration: ${{ matrix.configuration }}

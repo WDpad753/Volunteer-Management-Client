@@ -87,7 +87,20 @@
 	  </DefineConstants>
       <RunWixToolsOutOfProc Condition=" '$(PROCESSOR_ARCHITECTURE)'!='x86' ">true</RunWixToolsOutOfProc>
     </PropertyGroup>
-    <HeatDirectory OutputFile="ComponentsGenerated.wxs" DirectoryRefID="INSTALLFOLDER" ComponentGroupName="PublishedComponents" SuppressCom="true" Directory="$(BasePath)" SuppressFragments="true" SuppressRegistry="true" SuppressRootDirectory="true" AutoGenerateGuids="false" GenerateGuidsNow="true" ToolPath="$(WixToolPath)" PreprocessorVariable="var.BasePath" RunAsSeparateProcess="$(RunWixToolsOutOfProc)" />
+	  <HeatDirectory OutputFile="ComponentsGenerated.wxs" 
+					 DirectoryRefID="INSTALLFOLDER" 
+					 ComponentGroupName="PublishedComponents" 
+					 SuppressCom="true" 
+					 Directory="$(BasePath)" 
+					 SuppressFragments="true" 
+					 SuppressRegistry="true" 
+					 SuppressRootDirectory="true" 
+					 AutoGenerateGuids="false" 
+					 GenerateGuidsNow="true" 
+					 ToolPath="$(WixToolPath)" 
+					 PreprocessorVariable="var.BasePath" 
+					 RunAsSeparateProcess="$(RunWixToolsOutOfProc)">
+	  </HeatDirectory>
     <!--RunAsSeparateProcess="$(RunWixToolsOutOfProc)" />-->
     <!--Directory="..\Volunteer Management UI\bin\$(Configuration)\net8.0-windows" -->
   </Target>

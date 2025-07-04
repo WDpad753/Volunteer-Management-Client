@@ -47,8 +47,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj" />
-		<ProjectReference Include="..\ChangeLogGenerator\ChangeLogCoreLibrary\ChangeLogCoreLibrary.csproj" />
+		<ProjectReference Include="..\BaseClassLibrary\BaseClass\BaseClass.csproj" />
+		<ProjectReference Include="..\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
 		<ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
 	</ItemGroup>
 
@@ -57,8 +57,16 @@
 				<Message Text="TargetDir = $(TargetDir)" Importance="high" />
 				<ItemGroup>
 					<UnwantedFiles Include="$(TargetDir)ChangeLog*" />
+					<!-- Explicit names as fallback -->
+					<UnwantedFiles Include="$(TargetDir)ChangeLogConsole.deps.json" />
+					<UnwantedFiles Include="$(TargetDir)ChangeLogCoreLibrary.deps.json" />
 				</ItemGroup>
+			
 				<Message Text="Files to delete: @(UnwantedFiles)" Importance="high" />
 				<Delete Files="@(UnwantedFiles)" />
+		</Target>
+
+		<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		  <Exec Command="REM echo &quot;mkdir  ..\$(TargetFramework)&quot;&#xD;&#xA;REM rd /s /q ..\ChangeLogGenerator\ChangeLogConsole\bin\$(Configuration)\net8.0&#xD;&#xA;REM msbuild ..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj /p:Configuration=$(Configuration)&#xD;&#xA;REM &quot;..\ChangeLogGenerator\ChangeLogConsole\bin\$(Configuration)\net8.0\ChangeLogConsole.exe&quot; arguments &gt; &quot;..\..\..\..\..\tmp\output.txt&quot; 2&gt;&amp;1&#xD;&#xA;" />
 		</Target>
 	</Project>
