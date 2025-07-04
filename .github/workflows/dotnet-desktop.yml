@@ -65,7 +65,7 @@ jobs:
     steps:
     
         - name: Run Owner
-            run: echo "This job is running because the workflow was triggered by the repository owner"
+          run: echo "This job is running because the workflow was triggered by the repository owner"
         
         - name: Checkout
           uses: actions/checkout@v4
