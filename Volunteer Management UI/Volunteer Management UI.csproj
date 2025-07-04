@@ -41,9 +41,10 @@
 		<Folder Include="MVVM\Model\" />
 		<Folder Include="MVVM\ViewModel\" />
 		<Folder Include="MVVM\Views\Login\" />
-		<Folder Include="Config\" />
 		<Folder Include="Core\" />
-		<Folder Include="Services\" />
+		<Folder Include="Repository\Login\" />
+		<Folder Include="Resources\" />
+		<Folder Include="Services\Navigation\" />
 	</ItemGroup>
 
 	<ItemGroup>
