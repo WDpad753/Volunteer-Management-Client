@@ -418,4 +418,4 @@ FodyWeavers.xsd
 *.msp
 
 # ignore files
-ChangeLogGenerator/ChangeLogConsole/Config/*
+ChangeLogGenerator/ChangeLogConsole/Config/*.config
