@@ -44,7 +44,6 @@
 		<Folder Include="Core\" />
 		<Folder Include="Repository\Login\" />
 		<Folder Include="Resources\" />
-		<Folder Include="Services\Navigation\" />
 	</ItemGroup>
 
 	<ItemGroup>
