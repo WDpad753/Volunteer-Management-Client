@@ -39,8 +39,6 @@
 
 	<ItemGroup>
 		<Folder Include="MVVM\Model\" />
-		<Folder Include="MVVM\ViewModel\" />
-		<Folder Include="MVVM\Views\Login\" />
 		<Folder Include="Core\" />
 		<Folder Include="Repository\Login\" />
 		<Folder Include="Resources\" />
