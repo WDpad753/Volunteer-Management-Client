@@ -16,9 +16,10 @@ namespace Volunteer_Management_UI
     public partial class App : Application
     {
         string _configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config","App.config");
-        string _logPath = "";
-
+        string _logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"tmp");
+        
         public LogWriter logwriter;
+
         protected override void OnStartup(StartupEventArgs e)
         {
             logwriter = new(_configPath,_logPath);

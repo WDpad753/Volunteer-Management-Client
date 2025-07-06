@@ -50,6 +50,12 @@
 		<ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="Config\App.config">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 		<Target Name="PostBuildCleanup" AfterTargets="Build">
 			<!-- Remove files starting with "ChangeLog" from the output directory -->
 				<Message Text="TargetDir = $(TargetDir)" Importance="high" />
