@@ -4,8 +4,8 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Windows;
-using Volunteer_Management_UI.MVVM.Views.Login;
-using UtilityClass = BaseClass.MethodNameExtractor.FuncNameExtractor;
+using Volunteer_Management_UI.MVVM.Views.ShellWindow;
+using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
 
 
 namespace Volunteer_Management_UI
@@ -24,9 +24,9 @@ namespace Volunteer_Management_UI
         {
             logwriter = new(_configPath,_logPath);
             // This section is about selecting the View MainWindow and running the application:
-            MainWindow = new LoginWindow();
+            MainWindow = new ShellWindow();
             MainWindow.Show();
-            logwriter.LogWrite("Application is running now", this.GetType().Name, UtilityClass.GetMethodName(), MessageLevels.Debug);
+            logwriter.LogWrite("Application is running now", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Debug);
             base.OnStartup(e);
         }
     }

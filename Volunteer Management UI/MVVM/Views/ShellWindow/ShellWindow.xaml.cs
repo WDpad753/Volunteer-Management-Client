@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Volunteer_Management_UI.MVVM.Views.Login
+namespace Volunteer_Management_UI.MVVM.Views.ShellWindow
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for ShellWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class ShellWindow : Window
     {
-        public LoginWindow()
+        public ShellWindow()
         {
             InitializeComponent();
         }
