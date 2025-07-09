@@ -4,9 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Volunteer_Management_UI.MVVM.Views.Login"
+             xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    
+    <Grid Background="Red">
+        <Button x:Name="MainWindow" Command="{Binding LoginSuccessCommand}" Height="50" Width="100">
+            Sign In
+        </Button>
     </Grid>
 </UserControl>

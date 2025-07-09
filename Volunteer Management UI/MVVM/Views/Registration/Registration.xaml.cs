@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Volunteer_Management_UI.MVVM.Views.Register
+namespace Volunteer_Management_UI.MVVM.Views.Registration
 {
     /// <summary>
     /// Interaction logic for Registration.xaml
