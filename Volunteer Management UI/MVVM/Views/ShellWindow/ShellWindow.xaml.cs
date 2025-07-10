@@ -41,19 +41,19 @@ namespace Volunteer_Management_UI.MVVM.Views.ShellWindow
 
             DataContext = navigation; // critical to bind CurrentView property
 
-            navigation.NavigateTo<LoginViewModel,BaseSettings>(baseSettings);
+            navigation.NavigateTo<LoginViewModel>();
         }
 
         private void LoginView_Click(object sender, RoutedEventArgs e)
         {
             //_regionManager.RequestNavigate("AuthRegion", nameof(Login));
-            _navigation.NavigateTo<LoginViewModel, BaseSettings>(_baseSettings);
+            _navigation.NavigateTo<LoginViewModel>();
         }
 
         private void RegistrationView_Click(object sender, RoutedEventArgs e)
         {
             //_regionManager.RequestNavigate("AuthRegion", nameof(Registration));
-            _navigation.NavigateTo<RegistrationViewModel, BaseSettings>(_baseSettings);
+            _navigation.NavigateTo<RegistrationViewModel>();
         }
     }
 }
