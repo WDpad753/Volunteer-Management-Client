@@ -53,6 +53,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\BaseClassLibrary\BaseClass\BaseClass.csproj" />
 		<ProjectReference Include="..\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
+		<ProjectReference Include="..\UI Configuration Editor\UI Configuration Editor.csproj" />
 		<ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
 	</ItemGroup>
 
