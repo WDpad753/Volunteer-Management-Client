@@ -3,7 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:UI_Configuration_Editor"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Expander Style -->
+                <ResourceDictionary Source="/UIBaseClass;component/Styles/CustomExpanderStyle.xaml"/>
+                <!-- Button Style -->
+                <ResourceDictionary Source="/UIBaseClass;component/Styles/ButtonResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

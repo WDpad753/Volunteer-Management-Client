@@ -9,4 +9,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BaseClassLibrary\BaseClass\BaseClass.csproj" />
+    <ProjectReference Include="..\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
+    <ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
+  </ItemGroup>
+
 </Project>

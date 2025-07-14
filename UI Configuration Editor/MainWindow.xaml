@@ -8,5 +8,17 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--<Button Style="{StaticResource CustomButtonStyle}" Background="Red" Tag="2" BorderBrush="DarkGray" Width="50" Height="50">
+            <Button.Content>
+                Hello
+            </Button.Content>
+        </Button>-->
+        
     </Grid>
 </Window>
