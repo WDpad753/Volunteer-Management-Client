@@ -11,7 +11,7 @@
                 <!-- Expander Style -->
                 <ResourceDictionary Source="/UIBaseClass;component/Styles/CustomExpanderStyle.xaml"/>
                 <!-- Button Style -->
-                <ResourceDictionary Source="/UIBaseClass;component/Styles/ButtonResources.xaml"/>
+                <ResourceDictionary Source="/UIBaseClass;component/Styles/Buttons/ButtonResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

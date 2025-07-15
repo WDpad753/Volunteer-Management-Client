@@ -14,11 +14,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--<Button Style="{StaticResource CustomButtonStyle}" Background="Red" Tag="2" BorderBrush="DarkGray" Width="50" Height="50">
-            <Button.Content>
-                Hello
-            </Button.Content>
-        </Button>-->
-        
+        <Button Style="{DynamicResource CustomButtonStyle}" Background="Blue" Tag="2" Width="50" Height="50">
+        </Button>
     </Grid>
 </Window>
