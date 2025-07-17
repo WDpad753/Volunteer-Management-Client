@@ -38,7 +38,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="MVVM\Model\" />
+		<Folder Include="Dialogs\MVVM\Models\" />
+		<Folder Include="Dialogs\MVVM\Views\" />
+		<Folder Include="Dialogs\MVVM\ViewModels\" />
+		<Folder Include="MVVM\Models\" />
 		<Folder Include="Core\" />
 		<Folder Include="Repository\Login\" />
 		<Folder Include="Resources\" />
