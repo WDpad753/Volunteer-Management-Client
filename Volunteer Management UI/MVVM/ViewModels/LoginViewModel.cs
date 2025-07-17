@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Volunteer_Management_UI.MVVM.Views.ShellWindow;
 using Volunteer_Management_UI.MVVM.Views;
 using System.Windows;
-using UIBaseClass.MVVM;
 using System.Windows.Input;
-using BaseClass.Base;
 using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
+using UIBaseClass.MVVM.ViewBase;
+using UIBaseClass.MVVM.Base;
 
 namespace Volunteer_Management_UI.MVVM.ViewModels
 {

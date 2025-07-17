@@ -4,17 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_Configuration_Editor"
+        xmlns:controls="clr-namespace:UIBaseClass.Controls.StyleCommands;assembly=UIBaseClass"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Style="{DynamicResource CustomButtonStyle}" Background="Blue" Tag="2" Width="50" Height="50">
-        </Button>
+        <controls:RoundButton Style="{StaticResource CustomButtonTheme}" Background="Blue" Width="40" Height="30" CornerRadius="5" Content="Hello" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0" Padding="0" Click="RoundButton_Click"/>
     </Grid>
 </Window>
