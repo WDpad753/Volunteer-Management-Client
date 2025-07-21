@@ -11,17 +11,17 @@
         Background="{x:Null}"
         Title="ShellWindow" 
         WindowStartupLocation="CenterScreen"
-        Height="150" Width="500">
+        Height="Auto" Width="500">
 
     <Border Background="Transparent" BorderThickness="0" BorderBrush="Transparent" CornerRadius="15">
         <Grid x:Name="Header" Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Border Background="OrangeRed" CornerRadius="15,15,0,0" ClipToBounds="True">
-                <Grid Grid.Row="0" x:Name="HeaderGrid" Background="Transparent">
+            <Border Grid.Row="0" Background="OrangeRed" CornerRadius="15,15,0,0" ClipToBounds="True">
+                <Grid x:Name="HeaderGrid" Background="Transparent">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="50"/>

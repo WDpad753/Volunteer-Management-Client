@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using UI_Configuration_Editor.MVVM.Models;
 using UI_Configuration_Editor.MVVM.Views.ConfigEditor;
 using UI_Configuration_Editor.MVVM.Views.Shell_Window;
 using UIBaseClass.MVVM.Base;
@@ -22,6 +24,22 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
         {
             get => _canSave;
             set => SetProperty(ref _canSave, value);
+        }
+
+        public ObservableCollection<ComboOptions> ConfigOptions { get; } = new ObservableCollection<ComboOptions>()
+        {
+            new ComboOptions() { Name = "-- Select an option --", Tag = null },
+            new ComboOptions() { Name = "Registry", Tag = "Reg" },
+            new ComboOptions() { Name = "Environment", Tag = "Env" },
+            new ComboOptions() { Name = "Envcironment File", Tag = "EnvFile" },
+            new ComboOptions() { Name = "JSON File", Tag = "JsonFile" },
+        };
+
+        private string _selectedPanel;
+        public string SelectedPanel
+        {
+            get => _selectedPanel;
+            set => SetProperty(ref _selectedPanel, value);
         }
 
         public DelegateCommand SaveCommand { get; private set; }

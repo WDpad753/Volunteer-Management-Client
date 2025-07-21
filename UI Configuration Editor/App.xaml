@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="/UIBaseClass;component/Styles/Expanders/Theme/CustomExpanderStyle.xaml"/>
                 <!-- Button Style -->
                 <ResourceDictionary Source="/UIBaseClass;component/Styles/Buttons/Theme/ButtonTheme.xaml"/>
+                <!-- Animation Style -->
+                <ResourceDictionary Source="/UIBaseClass;component/Styles/Animation/AnimationTheme.xaml"/>
                 <!-- Material Design Dictionaries -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

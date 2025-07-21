@@ -9,10 +9,10 @@
         Background="{x:Null}">
 
     <Border Background="LightGray" CornerRadius="0,0,15,15">
-        <Grid Background="Transparent">
+        <Grid Background="Transparent" Margin="0,15,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -25,22 +25,63 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0">
+                <Grid Grid.Row="0" Margin="0,0,0,10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
-                    <TextBox Grid.Column="1" Width="100" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Label Grid.Column="0" Content="Setup:" FontWeight="Bold"/>
+                    <ComboBox x:Name="SettingsSelector" Grid.Column="1" 
+                              HorizontalAlignment="Stretch" 
+                              VerticalAlignment="Center"
+                              Width="Auto" Height="25" 
+                              Background="White" 
+                              Margin="93,0,5,0" ItemsSource="{Binding ConfigOptions}"
+                              DisplayMemberPath="Name" SelectedValuePath="Tag"
+                              SelectedValue="{Binding SelectedPanel}"/>
                 </Grid>
 
-                <Grid Grid.Row="1">
+                <StackPanel Grid.Row="1">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SelectedPanel}" Value="Reg">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
 
-                </Grid>
+                                <Trigger Property="Visibility" Value="Visible">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource SlideInStoryboard}"/>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                                <Trigger Property="Visibility" Value="Collapsed">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource SlideOutStoryboard}"/>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="Visibility" Value="Hidden">
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource SlideOutStoryboard}"/>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
+                        <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="100,0,5,0"/>
+                    </Grid>
+                </StackPanel>
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="0,15,0,15">
                 <button:RoundButton Style="{StaticResource CustomButtonTheme}" Background="LightGreen" Width="150" Height="38" CornerRadius="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0" Padding="0" Command="{Binding SaveCommand}" IsEnabled="{Binding CanSave}">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/save.png" Width="30" Height="30" Margin="5,0"/>
