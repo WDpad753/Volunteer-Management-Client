@@ -1,19 +1,23 @@
-﻿<Application x:Class="UI_Configuration_Editor.App"
+﻿<prism:PrismApplication x:Class="UI_Configuration_Editor.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:UI_Configuration_Editor"
-             StartupUri="MainWindow.xaml">
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:local="clr-namespace:UI_Configuration_Editor">
 
     <Application.Resources>
         <ResourceDictionary>
-
             <ResourceDictionary.MergedDictionaries>
                 <!-- Expander Style -->
-                <ResourceDictionary Source="/UIBaseClass;component/Styles/CustomExpanderStyle.xaml"/>
+                <ResourceDictionary Source="/UIBaseClass;component/Styles/Expanders/Theme/CustomExpanderStyle.xaml"/>
                 <!-- Button Style -->
-                <!--<ResourceDictionary Source="/UIBaseClass;component/Styles/Buttons/ButtonResources.xaml"/>-->
                 <ResourceDictionary Source="/UIBaseClass;component/Styles/Buttons/Theme/ButtonTheme.xaml"/>
+                <!-- Material Design Dictionaries -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-</Application>
+</prism:PrismApplication>
