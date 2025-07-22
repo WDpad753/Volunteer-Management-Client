@@ -18,7 +18,8 @@ using Prism.Ioc;
 using Prism.Unity;
 using Prism.Navigation.Regions;
 using BaseClass.Helper;
-using UIBaseClass.MVVM.Base;
+using BaseClass.Base;
+using BaseClass.Base.Interface;
 
 namespace Volunteer_Management_UI
 {
