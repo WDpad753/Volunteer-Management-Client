@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseClass.Base.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using UIBaseClass.MVVM.Base;
 using UIBaseClass.Services.Navigation.Interface;
 using Volunteer_Management_UI.MVVM.ViewModels;
 using Volunteer_Management_UI.MVVM.Views.Registration;
@@ -25,10 +25,10 @@ namespace Volunteer_Management_UI.MVVM.Views.ShellWindow
     {
         //private readonly IRegionManager _regionManager;
         private readonly IViewNavigation _navigation;
-        private readonly BaseSettings _baseSettings;
+        private readonly IBase _baseSettings;
 
         //public ShellWindow(IRegionManager regionManager)
-        public ShellWindow(IViewNavigation navigation, BaseSettings baseSettings)
+        public ShellWindow(IViewNavigation navigation, IBase baseSettings)
         {
             InitializeComponent();
             //_regionManager = regionManager;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BaseClass.Base.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using UI_Configuration_Editor.MVVM.ViewModels;
-using UIBaseClass.MVVM.Base;
 using UIBaseClass.Services.Navigation.Interface;
 
 namespace UI_Configuration_Editor.MVVM.Views.Shell_Window
@@ -23,7 +23,7 @@ namespace UI_Configuration_Editor.MVVM.Views.Shell_Window
     public partial class ShellWindow : Window
     {
         private readonly IViewNavigation _navigation;
-        private readonly BaseSettings _baseSettings;
+        private readonly IBase _baseSettings;
         private static double currentheight;
         private static double currentwidth;
 
@@ -39,7 +39,7 @@ namespace UI_Configuration_Editor.MVVM.Views.Shell_Window
             set { currentwidth = value; }
         }
 
-        public ShellWindow(IViewNavigation navigation, BaseSettings baseSettings)
+        public ShellWindow(IViewNavigation navigation, IBase baseSettings)
         {
             InitializeComponent();
 

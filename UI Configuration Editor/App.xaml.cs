@@ -2,6 +2,8 @@
 using BaseClass.Base.Interface;
 using BaseLogger;
 using BaseLogger.Models;
+using CustomMessageBox.MVVM.Modules;
+using CustomMessageBox.MVVM.Views.MainWindow;
 using Prism.Unity;
 using System.ComponentModel;
 using System.Configuration;
@@ -10,10 +12,8 @@ using System.IO;
 using System.Windows;
 using UI_Configuration_Editor.MVVM.Views.ConfigEditor;
 using UI_Configuration_Editor.MVVM.Views.Shell_Window;
-using UIBaseClass.MessageBox;
 using UIBaseClass.Services.Navigation;
 using UIBaseClass.Services.Navigation.Interface;
-using static UIBaseClass.MessageBox.CustomMessageBox;
 using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
 
 namespace UI_Configuration_Editor
@@ -27,7 +27,7 @@ namespace UI_Configuration_Editor
         string _logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmp");
         IBase? baseSettings = null;
         LogWriter? logwriter = null;
-        CustomMessageBox? messageBox = null;
+        BaseMessageBox? messageBox = null;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -75,17 +75,17 @@ namespace UI_Configuration_Editor
             {
                 System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
                 message = string.Format("Unhandled exception in {0} v{1}", assemblyName.Name, assemblyName.Version);
-                messageBox.Show(message, CustomDialogTitle.Error, CustomDialogButton.Ok);
+                messageBox.Show(message, DialogTitle.Error, DialogButtons.Ok);
             }
             catch (Exception ex)
             {
                 logwriter.LogWrite($"Exception in LogUnhandledException: {ex}", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
-                messageBox.Show($"Critical error occurred while handling an exception.Exception: {ex}", CustomDialogTitle.Error, CustomDialogButton.Ok);
+                messageBox.Show($"Critical error occurred while handling an exception.Exception: {ex}", DialogTitle.Error, DialogButtons.Ok);
             }
             finally
             {
                 logwriter.LogWrite($"Message: {message}; Exception: {exception}.", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
-                messageBox.Show($"Message: {message}; Exception: {exception}.", CustomDialogTitle.Error, CustomDialogButton.Ok);
+                messageBox.Show($"Message: {message}; Exception: {exception}.", DialogTitle.Error, DialogButtons.Ok);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using BaseClass.Base.Interface;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,11 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using UI_Configuration_Editor.MVVM.Models;
 using UI_Configuration_Editor.MVVM.ViewModels;
-using UIBaseClass.MessageBox;
-using UIBaseClass.MVVM.Base;
-using UIBaseClass.MVVM.Base.Interface;
 using UIBaseClass.Services.Navigation.Interface;
-using static UIBaseClass.MessageBox.CustomMessageBox;
 
 namespace UI_Configuration_Editor.MVVM.Views.ConfigEditor
 {

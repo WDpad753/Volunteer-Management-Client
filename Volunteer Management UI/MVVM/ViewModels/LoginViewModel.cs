@@ -9,14 +9,14 @@ using System.Windows;
 using System.Windows.Input;
 using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
 using UIBaseClass.MVVM.ViewBase;
-using UIBaseClass.MVVM.Base;
+using BaseClass.Base.Interface;
 
 namespace Volunteer_Management_UI.MVVM.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
         private readonly IContainerProvider _containerProvider;
-        private readonly BaseSettings _baseSettings;
+        private readonly IBase _baseSettings;
 
         private bool _canLogin;
         public bool CanLogin
@@ -28,7 +28,7 @@ namespace Volunteer_Management_UI.MVVM.ViewModels
 
         public DelegateCommand LoginSuccessCommand { get; private set; }
 
-        public LoginViewModel(IContainerProvider containerProvider, BaseSettings baseSettings)
+        public LoginViewModel(IContainerProvider containerProvider, IBase baseSettings)
         {
             _containerProvider = containerProvider;
             _baseSettings = baseSettings;

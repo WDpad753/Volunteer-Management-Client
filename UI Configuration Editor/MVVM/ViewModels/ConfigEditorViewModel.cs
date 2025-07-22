@@ -1,4 +1,5 @@
-﻿using BaseClass.Model;
+﻿using BaseClass.Base.Interface;
+using BaseClass.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,8 +11,6 @@ using System.Windows.Controls;
 using UI_Configuration_Editor.MVVM.Models;
 using UI_Configuration_Editor.MVVM.Views.ConfigEditor;
 using UI_Configuration_Editor.MVVM.Views.Shell_Window;
-using UIBaseClass.MVVM.Base;
-using UIBaseClass.MVVM.Base.Interface;
 using UIBaseClass.MVVM.ViewBase;
 using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
 
