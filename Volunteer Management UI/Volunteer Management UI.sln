@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volunteer Management UI", "Volunteer Management UI.csproj", "{0185F661-0C10-47E6-AFC2-38EE44A1C446}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UIBaseClass", "..\UIBaseClass\UIBaseClass\UIBaseClass.csproj", "{3E3667FE-B508-D9E3-82D9-437A7336AF3B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeLogConsole", "..\ChangeLogGenerator\ChangeLogConsole\ChangeLogConsole.csproj", "{53343903-DCC0-7B5E-591E-FF97464FA09A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangeLogCoreLibrary", "..\ChangeLogGenerator\ChangeLogCoreLibrary\ChangeLogCoreLibrary.csproj", "{C4ED983B-718C-1332-78A6-4406F989D956}"
@@ -22,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI Configuration Editor", "..\UI Configuration Editor\UI Configuration Editor.csproj", "{1315D371-3C0E-4890-BE8B-4B2B39EC0458}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomMessageBox", "..\Custom-Message-Box\CustomMessageBox\CustomMessageBox.csproj", "{BE582C1D-EA1D-04D3-6909-09D3B7E365B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBaseClass", "..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj", "{271D6005-314B-FD4E-4A8E-97E8B527A408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,14 +39,6 @@ Global
 		{0185F661-0C10-47E6-AFC2-38EE44A1C446}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0185F661-0C10-47E6-AFC2-38EE44A1C446}.Release|x86.ActiveCfg = Release|Any CPU
 		{0185F661-0C10-47E6-AFC2-38EE44A1C446}.Release|x86.Build.0 = Release|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Debug|x86.Build.0 = Debug|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Release|x86.ActiveCfg = Release|Any CPU
-		{3E3667FE-B508-D9E3-82D9-437A7336AF3B}.Release|x86.Build.0 = Release|Any CPU
 		{53343903-DCC0-7B5E-591E-FF97464FA09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53343903-DCC0-7B5E-591E-FF97464FA09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53343903-DCC0-7B5E-591E-FF97464FA09A}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -111,6 +103,14 @@ Global
 		{BE582C1D-EA1D-04D3-6909-09D3B7E365B0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BE582C1D-EA1D-04D3-6909-09D3B7E365B0}.Release|x86.ActiveCfg = Release|Any CPU
 		{BE582C1D-EA1D-04D3-6909-09D3B7E365B0}.Release|x86.Build.0 = Release|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Debug|x86.Build.0 = Debug|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Release|x86.ActiveCfg = Release|Any CPU
+		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
