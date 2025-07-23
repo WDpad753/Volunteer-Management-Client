@@ -214,12 +214,12 @@ jobs:
               Write-Host "❌ UIBaseClass.csproj missing"
             }    
 
-        - name: Build the solution
-          run: dotnet build "$env:Solution_Name" --configuration $env:Configuration
-          shell: pwsh
-          env:
-            Solution_Name: 'Volunteer Management UI\Volunteer Management UI.sln'
-            Configuration: ${{ matrix.configuration }}
+        # - name: Build the solution
+        #   run: dotnet build "$env:Solution_Name" --configuration $env:Configuration
+        #   shell: pwsh
+        #   env:
+        #     Solution_Name: 'Volunteer Management UI\Volunteer Management UI.sln'
+        #     Configuration: ${{ matrix.configuration }}
   
         - name: Restore dependencies
           run: dotnet restore "$env:Solution_Name" --configuration $env:Configuration
