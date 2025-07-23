@@ -198,9 +198,41 @@ jobs:
           # env:
             # Configuration: ${{ matrix.configuration }}
 
-        
-        - name: Restore the application
-          run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
-          working-directory: ${{ github.workspace }}
+        - name: Debug project structure
+          run: |
+            echo "Listing Volunteer Management UI directory:"
+            dir "Volunteer Management UI"
+            echo "Listing UIBaseClass directory:"
+            dir "UIBaseClass\UIBaseClass"
+
+        - name: Check if project file exists (PowerShell)
+          shell: pwsh
+          run: |
+            if (Test-Path "UIBaseClass\UIBaseClass\UIBaseClass.csproj") {
+              Write-Host "✅ UIBaseClass.csproj found"
+            } else {
+              Write-Host "❌ UIBaseClass.csproj missing"
+            }    
+
+        # - name: Build the solution
+        #   run: dotnet build "$env:Solution_Name" --configuration $env:Configuration
+        #   shell: pwsh
+        #   env:
+        #     Solution_Name: 'Volunteer Management UI\Volunteer Management UI.sln'
+        #     Configuration: ${{ matrix.configuration }}
+  
+        - name: Restore dependencies
+          run: dotnet restore "$env:Solution_Name"
+          shell: pwsh
+          working-directory: 'Volunteer Management UI'
           env:
             Configuration: ${{ matrix.configuration }}
+            Solution_Name: 'Volunteer Management UI.sln'   # Just the .sln file here, relative to working-directory
+        
+        - name: Build solution
+          run: dotnet build "$env:Solution_Name" --configuration $env:Configuration --no-restore
+          shell: pwsh
+          working-directory: 'Volunteer Management UI'
+          env:
+            Configuration: ${{ matrix.configuration }}
+            Solution_Name: 'Volunteer Management UI.sln'
