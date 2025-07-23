@@ -198,7 +198,21 @@ jobs:
           # env:
             # Configuration: ${{ matrix.configuration }}
 
-        
+        - name: Debug project structure
+          run: |
+            echo "Listing Volunteer Management UI directory:"
+            dir "Volunteer Management UI"
+            echo "Listing UIBaseClass directory:"
+            dir "UIBaseClass\UIBaseClass"
+
+        - name: Check if project file exists
+          run: |
+            if exist "UIBaseClass\UIBaseClass\UIBaseClass.csproj" (
+              echo "✅ UIBaseClass.csproj found"
+            ) else (
+              echo "❌ UIBaseClass.csproj missing"
+            )       
+            
         - name: Restore the application
           run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
           working-directory: ${{ github.workspace }}
