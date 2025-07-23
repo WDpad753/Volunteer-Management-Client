@@ -205,13 +205,14 @@ jobs:
             echo "Listing UIBaseClass directory:"
             dir "UIBaseClass\UIBaseClass"
 
-        - name: Check if project file exists
+        - name: Check if project file exists (PowerShell)
+          shell: pwsh
           run: |
-            if exist "UIBaseClass\UIBaseClass\UIBaseClass.csproj" (
-              echo "✅ UIBaseClass.csproj found"
-            ) else (
-              echo "❌ UIBaseClass.csproj missing"
-            )       
+            if (Test-Path "UIBaseClass\UIBaseClass\UIBaseClass.csproj") {
+              Write-Host "✅ UIBaseClass.csproj found"
+            } else {
+              Write-Host "❌ UIBaseClass.csproj missing"
+            }    
             
         - name: Restore the application
           run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
