@@ -222,7 +222,7 @@ jobs:
         #     Configuration: ${{ matrix.configuration }}
   
         - name: Restore dependencies
-          run: dotnet restore "$env:Solution_Name" --configuration $env:Configuration
+          run: dotnet restore "$env:Solution_Name"
           shell: pwsh
           working-directory: 'Volunteer Management UI'
           env:
