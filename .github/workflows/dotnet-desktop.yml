@@ -192,15 +192,15 @@ jobs:
         #     GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
 
         # Restore the application to populate the obj folder with RuntimeIdentifiers
+        # - name: Restore the application
+          # run: dotnet restore "${{ env.Solution_Name }}"
+          # working-directory: ${{ github.workspace }}
+          # env:
+            # Configuration: ${{ matrix.configuration }}
+
+        
         - name: Restore the application
-          run: dotnet restore "${{ env.Solution_Name }}"
+          run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
           working-directory: ${{ github.workspace }}
           env:
             Configuration: ${{ matrix.configuration }}
-
-        
-        # - name: Restore the application
-        #   run: msbuild "${{ env.Solution_Name }}" /t:Restore /p:Configuration=$env:Configuration
-        #   working-directory: ${{ github.workspace }}
-        #   env:
-        #     Configuration: ${{ matrix.configuration }}
