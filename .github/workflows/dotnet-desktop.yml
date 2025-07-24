@@ -73,11 +73,11 @@ jobs:
             fetch-depth: 0
             submodules: recursive
 
-        - name: Checkout submodules
-          run: git submodule update --init --recursive 
+        # - name: Checkout submodules
+        #   run: git submodule update --init --recursive 
 
-        - name: Update the submodules
-          run: git submodule update --remote
+        # - name: Update the submodules
+        #   run: git submodule update --remote
 
         - name: Dump directory tree
           shell: powershell
@@ -224,19 +224,25 @@ jobs:
         - name: Patch ProjectReference paths
           shell: pwsh
           run: tools/Patch-ProjectReferences.ps1
-  
-        - name: Restore dependencies
-          run: dotnet restore "$env:Solution_Name"
-          shell: pwsh
-          working-directory: 'Volunteer Management UI'
+
+        - name: Restore the application
+          run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
+          working-directory: ${{ github.workspace }}
           env:
             Configuration: ${{ matrix.configuration }}
-            Solution_Name: 'Volunteer Management UI.sln'   # Just the .sln file here, relative to working-directory
+          
+        # - name: Restore dependencies
+        #   run: dotnet restore "$env:Solution_Name"
+        #   shell: pwsh
+        #   working-directory: 'Volunteer Management UI'
+        #   env:
+        #     Configuration: ${{ matrix.configuration }}
+        #     Solution_Name: 'Volunteer Management UI.sln'   # Just the .sln file here, relative to working-directory
         
-        - name: Build solution
-          run: dotnet build "$env:Solution_Name" --configuration $env:Configuration --no-restore
-          shell: pwsh
-          working-directory: 'Volunteer Management UI'
-          env:
-            Configuration: ${{ matrix.configuration }}
-            Solution_Name: 'Volunteer Management UI.sln'
+        # - name: Build solution
+        #   run: dotnet build "$env:Solution_Name" --configuration $env:Configuration --no-restore
+        #   shell: pwsh
+        #   working-directory: 'Volunteer Management UI'
+        #   env:
+        #     Configuration: ${{ matrix.configuration }}
+        #     Solution_Name: 'Volunteer Management UI.sln'
