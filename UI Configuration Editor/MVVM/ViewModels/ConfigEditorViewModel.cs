@@ -1,5 +1,6 @@
 ﻿using BaseClass.Base.Interface;
 using BaseClass.Model;
+using CustomMessageBox.MVVM.Modules;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -66,7 +67,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
         private void OnSave()
         {
-            baseConfig.Messagebox.Show();
+            baseConfig.Messagebox.Show("Save Successful", DialogTitle.Info, DialogButtons.Ok);
 
             baseConfig.Logger.LogWrite("Save Successful", this.GetType().Name, FuncName.GetMethodName(), BaseLogger.Models.MessageLevels.Log);
 
