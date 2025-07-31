@@ -1,6 +1,8 @@
 $pattern1 = '..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj'
+$pattern2 = '..\..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj'
 
 $replace1 = '..\UIBaseClass\UIBaseClass\UIBaseClass.csproj'
+$replace2 = '..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj'
 
 
 $csprojFiles = Get-ChildItem -Recurse -Filter *.csproj
@@ -8,7 +10,7 @@ $slnFiles = Get-ChildItem -Recurse -Filter *.sln
 
 foreach ($file in $csprojFiles) {
     $content = Get-Content $file.FullName -Raw
-    $patched = $content.Replace($pattern1, $replace1)
+    $patched = $content.Replace($pattern1, $replace1).Replace($pattern2, $replace2)
 
     if ($patched -ne $content) {
         Write-Host "Patching: $($file.FullName)"
