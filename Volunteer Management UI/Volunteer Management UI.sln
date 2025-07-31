@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomMessageBox", "..\Cust
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIBaseClass", "..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj", "{271D6005-314B-FD4E-4A8E-97E8B527A408}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomErrorMessageBox", "..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj", "{CFB2698A-E104-0562-D996-ED6ACA4035F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -151,6 +153,18 @@ Global
 		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Release|x64.Build.0 = Release|Any CPU
 		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Release|x86.ActiveCfg = Release|Any CPU
 		{271D6005-314B-FD4E-4A8E-97E8B527A408}.Release|x86.Build.0 = Release|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Debug|x64.Build.0 = Debug|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Debug|x86.Build.0 = Debug|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Release|x64.ActiveCfg = Release|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Release|x64.Build.0 = Release|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Release|x86.ActiveCfg = Release|Any CPU
+		{CFB2698A-E104-0562-D996-ED6ACA4035F7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

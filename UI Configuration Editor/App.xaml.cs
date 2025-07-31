@@ -2,6 +2,7 @@
 using BaseClass.Base.Interface;
 using BaseLogger;
 using BaseLogger.Models;
+using CustomErrorMessageBox.MVVM.Views.ErrorMessageBox;
 using CustomMessageBox.MVVM.Models;
 using CustomMessageBox.MVVM.Views.MessageBox;
 using Prism.Unity;
@@ -28,6 +29,7 @@ namespace UI_Configuration_Editor
         IBase? baseSettings = null;
         LogWriter? logwriter = null;
         BaseMessageBox? messageBox = null;
+        BaseErrorMessageBox? errorMessageBox = null;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -59,10 +61,12 @@ namespace UI_Configuration_Editor
             // Register BaseSettings
             logwriter = new(_configPath, _logPath);
             messageBox = new();
+            errorMessageBox = new();
             baseSettings = new BaseSettings()
             {
                 Logger = logwriter,
-                Messagebox = messageBox
+                Messagebox = messageBox,
+                ErrorMessagebox = errorMessageBox
             };
             containerRegistry.RegisterInstance(baseSettings);
         }
