@@ -212,7 +212,14 @@ jobs:
               Write-Host "✅ UIBaseClass.csproj found"
             } else {
               Write-Host "❌ UIBaseClass.csproj missing"
-            }    
+            }
+            if (Test-Path "Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj") {
+              Write-Host "✅ CustomErrorMessageBox.csproj found"
+            } elseif (Test-Path "Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj") {
+              Write-Host "✅ CustomErrorMessageBox.csproj found"
+            } else {
+              Write-Host "❌ CustomErrorMessageBox.csproj missing"
+            }  
 
         # - name: Build the solution
         #   run: dotnet build "$env:Solution_Name" --configuration $env:Configuration
