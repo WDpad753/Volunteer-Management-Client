@@ -1,8 +1,8 @@
 $pattern1 = '..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj'
-$pattern2 = '..\..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj'
+# $pattern2 = '..\..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj'
 
 $replace1 = '..\UIBaseClass\UIBaseClass\UIBaseClass.csproj'
-$replace2 = '..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj'
+# $replace2 = '..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj'
 
 
 $csprojFiles = Get-ChildItem -Recurse -Filter *.csproj
