@@ -2,8 +2,8 @@
 using BaseClass.Base.Interface;
 using BaseLogger;
 using BaseLogger.Models;
-using CustomMessageBox.MVVM.Modules;
-using CustomMessageBox.MVVM.Views.MainWindow;
+using CustomMessageBox.MVVM.Models;
+using CustomMessageBox.MVVM.Views.MessageBox;
 using Prism.Unity;
 using System.ComponentModel;
 using System.Configuration;

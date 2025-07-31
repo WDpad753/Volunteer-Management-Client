@@ -1,6 +1,6 @@
 ﻿using BaseClass.Base.Interface;
 using BaseClass.Model;
-using CustomMessageBox.MVVM.Modules;
+using CustomMessageBox.MVVM.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
