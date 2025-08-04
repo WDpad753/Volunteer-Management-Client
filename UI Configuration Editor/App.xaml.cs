@@ -28,8 +28,8 @@ namespace UI_Configuration_Editor
         string _logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmp");
         IBase? baseSettings = null;
         LogWriter? logwriter = null;
-        BaseMessageBox? messageBox = null;
-        BaseErrorMessageBox? errorMessageBox = null;
+        //BaseMessageBox? messageBox = null;
+        //BaseErrorMessageBox? errorMessageBox = null;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -60,8 +60,8 @@ namespace UI_Configuration_Editor
 
             // Register BaseSettings
             logwriter = new(_configPath, _logPath);
-            messageBox = new BaseMessageBox();
-            errorMessageBox = new CustomErrorMessageBox.MVVM.Views.ErrorMessageBox.BaseErrorMessageBox();
+            BaseMessageBox messageBox = new();
+            BaseErrorMessageBox errorMessageBox = new();
             baseSettings = new BaseSettings()
             {
                 Logger = logwriter,
