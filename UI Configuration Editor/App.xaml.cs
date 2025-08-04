@@ -2,7 +2,7 @@ using BaseClass.Base;
 using BaseClass.Base.Interface;
 using BaseLogger;
 using BaseLogger.Models;
-using CustomErrorMessageBox.MVVM.Views.ErrorMessageBox;
+using CustomMessageBox.MVVM.Views.ErrorMessageBox;
 using CustomMessageBox.MVVM.Models;
 using CustomMessageBox.MVVM.Views.MessageBox;
 using Prism.Unity;
