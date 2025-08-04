@@ -17,10 +17,20 @@
   </ItemGroup>
 
     <PropertyGroup>
+		<CustomMsgBoxA>..\..\..\Custom-Message-Box\CustomMessageBox\CustomMessageBox.csproj</CustomMsgBoxA>
 	    <CustomErrorA>..\..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj</CustomErrorA>
+		<CustomMsgBoxB>..\..\Custom-Message-Box\CustomMessageBox\CustomMessageBox.csproj</CustomMsgBoxB>
 	    <CustomErrorB>..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj</CustomErrorB>
     </PropertyGroup>
 
+    <ItemGroup Condition="Exists('$(CustomMsgBoxA)')">
+	    <ProjectReference Include="$(CustomMsgBoxA)" />
+    </ItemGroup>
+
+    <ItemGroup Condition="!Exists('$(CustomMsgBoxA)') and Exists('$(CustomMsgBoxB)')">
+	    <ProjectReference Include="$(CustomMsgBoxB)" />
+    </ItemGroup>
+	
     <ItemGroup Condition="Exists('$(CustomErrorA)')">
 	    <ProjectReference Include="$(CustomErrorA)" />
     </ItemGroup>
