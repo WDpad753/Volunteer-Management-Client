@@ -80,19 +80,19 @@ namespace UI_Configuration_Editor
                 System.Reflection.AssemblyName assemblyName = System.Reflection.Assembly.GetExecutingAssembly().GetName();
                 message = string.Format("Unhandled exception in {0} v{1}", assemblyName.Name, assemblyName.Version);
                 //messageBox.Show(message, DialogTitle.Error, DialogButtons.Ok);
-                baseSettings.ErrorMessagebox.ShowError(message, exception);
+                baseSettings.ErrorMessagebox.ShowErrorMsg(message, exception);
             }
             catch (Exception ex)
             {
                 logwriter.LogWrite($"Exception in LogUnhandledException: {ex}", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
                 //messageBox.Show($"Critical error occurred while handling an exception.Exception: {ex}", DialogTitle.Error, DialogButtons.Ok);
-                baseSettings.ErrorMessagebox.ShowError(message, ex);
+                baseSettings.ErrorMessagebox.ShowErrorMsg(message, ex);
             }
             finally
             {
                 logwriter.LogWrite($"Message: {message}; Exception: {exception}.", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
                 //messageBox.Show($"Message: {message}; Exception: {exception}.", DialogTitle.Error, DialogButtons.Ok);
-                baseSettings.ErrorMessagebox.ShowError(message, exception);
+                baseSettings.ErrorMessagebox.ShowErrorMsg(message, exception);
             }
         }
 
