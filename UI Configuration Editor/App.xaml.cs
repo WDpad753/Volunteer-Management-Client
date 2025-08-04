@@ -61,7 +61,7 @@ namespace UI_Configuration_Editor
             // Register BaseSettings
             logwriter = new(_configPath, _logPath);
             messageBox = new BaseMessageBox();
-            errorMessageBox = new BaseErrorMessageBox();
+            errorMessageBox = new CustomErrorMessageBox.MVVM.Views.ErrorMessageBox.BaseErrorMessageBox();
             baseSettings = new BaseSettings()
             {
                 Logger = logwriter,
