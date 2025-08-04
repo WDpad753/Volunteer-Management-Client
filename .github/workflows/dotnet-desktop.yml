@@ -85,9 +85,17 @@ jobs:
             Write-Host "Working dir: $(Get-Location)"
             Get-ChildItem -Force -Recurse
 
-        # - name: Patch ProjectReference paths
-        #   shell: pwsh
-        #   run: tools/Patch-ProjectReferences.ps1
+        - name: Patch ProjectReference paths
+          shell: pwsh
+          run: tools/Patch-ProjectReferences.ps1
+
+        - name: Clear NuGet cache
+          run: dotnet nuget locals all --clear
+
+        - name: Clean bin/obj folders
+          shell: pwsh
+          run: |
+            Get-ChildItem -Recurse -Include bin,obj -Directory | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
 
         # Install the .NET Core workload
         - name: Install .NET Core
@@ -139,9 +147,9 @@ jobs:
           run: |
             dotnet workload restore "${{ env.Main_Project_Path }}"
 
-        - name: Patch ProjectReference paths
-          shell: pwsh
-          run: tools/Patch-ProjectReferences.ps1
+        # - name: Patch ProjectReference paths
+        #   shell: pwsh
+        #   run: tools/Patch-ProjectReferences.ps1
 
         - name: Build main project
           run: dotnet build "${{ env.Main_Project_Path }}" --configuration ${{ matrix.configuration }}
@@ -229,9 +237,9 @@ jobs:
               Write-Host "❌ CustomErrorMessageBox.csproj missing"
             }  
 
-        - name: Patch ProjectReference paths
-          shell: pwsh
-          run: tools/Patch-ProjectReferences.ps1
+        # - name: Patch ProjectReference paths
+        #   shell: pwsh
+        #   run: tools/Patch-ProjectReferences.ps1
 
         - name: Restore the application
           run: msbuild $env:Solution_Name /t:Restore /p:Configuration=${{ matrix.configuration }}
