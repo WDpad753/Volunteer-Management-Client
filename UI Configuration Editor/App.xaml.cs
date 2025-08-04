@@ -71,6 +71,11 @@ namespace UI_Configuration_Editor
             containerRegistry.RegisterInstance(baseSettings);
         }
 
+        /// <summary>
+        /// This area is for setting the exception messages.
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="source"></param>
         private void LogUnhandledException(Exception exception, string source)
         {
             string message = $"Unhandled exception ({source})";
