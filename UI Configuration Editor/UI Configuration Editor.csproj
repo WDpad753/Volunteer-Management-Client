@@ -16,7 +16,7 @@
     <None Remove="Resources\save.png" />
   </ItemGroup>
 
-    <PropertyGroup>
+    <!--<PropertyGroup>
 		<CustomMsgBoxA>..\..\..\Custom-Message-Box\CustomMessageBox\CustomMessageBox.csproj</CustomMsgBoxA>
 	    <CustomErrorA>..\..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj</CustomErrorA>
 		<CustomMsgBoxB>..\..\Custom-Message-Box\CustomMessageBox\CustomMessageBox.csproj</CustomMsgBoxB>
@@ -37,7 +37,7 @@
 
     <ItemGroup Condition="!Exists('$(CustomErrorA)') and Exists('$(CustomErrorB)')">
 	    <ProjectReference Include="$(CustomErrorB)" />
-    </ItemGroup>
+    </ItemGroup>-->
 	
   <ItemGroup>
     <ProjectReference Include="..\BaseClassLibrary\BaseClass\BaseClass.csproj" />
