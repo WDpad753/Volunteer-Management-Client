@@ -60,8 +60,8 @@ namespace UI_Configuration_Editor
 
             // Register BaseSettings
             logwriter = new(_configPath, _logPath);
-            messageBox = new();
-            errorMessageBox = new();
+            messageBox = new BaseMessageBox();
+            errorMessageBox = new BaseErrorMessageBox();
             baseSettings = new BaseSettings()
             {
                 Logger = logwriter,
