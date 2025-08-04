@@ -95,10 +95,6 @@ jobs:
           with:
             dotnet-version: 8.0.x
 
-        # - name: Install required workloads
-        #   run: |
-        #     dotnet workload restore
-
         - name: Download WiX Toolset binaries
           shell: pwsh
           run: |
@@ -138,7 +134,11 @@ jobs:
 
         - name: Restore main project packages
           run: dotnet restore "${{ env.Main_Project_Path }}"
-        
+
+        - name: Install required workloads
+          run: |
+            dotnet workload restore "${{ env.Main_Project_Path }}"
+          
         - name: Build main project
           run: dotnet build "${{ env.Main_Project_Path }}" --configuration ${{ matrix.configuration }}
 
@@ -225,13 +225,6 @@ jobs:
               Write-Host "❌ CustomErrorMessageBox.csproj missing"
             }  
 
-        # - name: Build the solution
-        #   run: dotnet build "$env:Solution_Name" --configuration $env:Configuration
-        #   shell: pwsh
-        #   env:
-        #     Solution_Name: 'Volunteer Management UI\Volunteer Management UI.sln'
-        #     Configuration: ${{ matrix.configuration }}
-
         - name: Patch ProjectReference paths
           shell: pwsh
           run: tools/Patch-ProjectReferences.ps1
@@ -241,19 +234,3 @@ jobs:
           working-directory: ${{ github.workspace }}
           env:
             Configuration: ${{ matrix.configuration }}
-          
-        # - name: Restore dependencies
-        #   run: dotnet restore "$env:Solution_Name"
-        #   shell: pwsh
-        #   working-directory: 'Volunteer Management UI'
-        #   env:
-        #     Configuration: ${{ matrix.configuration }}
-        #     Solution_Name: 'Volunteer Management UI.sln'   # Just the .sln file here, relative to working-directory
-        
-        # - name: Build solution
-        #   run: dotnet build "$env:Solution_Name" --configuration $env:Configuration --no-restore
-        #   shell: pwsh
-        #   working-directory: 'Volunteer Management UI'
-        #   env:
-        #     Configuration: ${{ matrix.configuration }}
-        #     Solution_Name: 'Volunteer Management UI.sln'
