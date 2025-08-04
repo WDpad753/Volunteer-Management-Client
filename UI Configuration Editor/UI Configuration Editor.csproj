@@ -16,6 +16,19 @@
     <None Remove="Resources\save.png" />
   </ItemGroup>
 
+    <PropertyGroup>
+	    <CustomErrorA>..\..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj</CustomErrorA>
+	    <CustomErrorB>..\..\Custom-Error-Message-Box\CustomErrorMessageBox\CustomErrorMessageBox.csproj</CustomErrorB>
+    </PropertyGroup>
+
+    <ItemGroup Condition="Exists('$(CustomErrorA)')">
+	    <ProjectReference Include="$(CustomErrorA)" />
+    </ItemGroup>
+
+    <ItemGroup Condition="!Exists('$(CustomErrorA)') and Exists('$(CustomErrorB)')">
+	    <ProjectReference Include="$(CustomErrorB)" />
+    </ItemGroup>
+	
   <ItemGroup>
     <ProjectReference Include="..\BaseClassLibrary\BaseClass\BaseClass.csproj" />
     <ProjectReference Include="..\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
