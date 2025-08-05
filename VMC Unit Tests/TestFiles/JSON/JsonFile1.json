@@ -1,0 +1,63 @@
+{
+  "company": {
+    "name": "TechCorp",
+    "location": {
+      "address": "123 Innovation Drive",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94107"
+    },
+    "departments": [
+      {
+        "name": "Engineering",
+        "manager": "Alice Smith",
+        "teams": [
+          {
+            "teamName": "Backend",
+            "members": 10
+          },
+          {
+            "teamName": "Frontend",
+            "members": 8
+          }
+        ]
+      },
+      {
+        "name": "Marketing",
+        "manager": "Bob Johnson",
+        "teams": [
+          {
+            "teamName": "Content",
+            "members": 5
+          },
+          {
+            "teamName": "SEO",
+            "members": 3
+          }
+        ]
+      }
+    ]
+  },
+  "founded": 2010,
+  "publiclyListed": false,
+  "products": [
+    {
+      "productName": "SuperWidget",
+      "launchYear": 2015,
+      "features": {
+        "featureA": true,
+        "featureB": false,
+        "featureC": "optional"
+      }
+    },
+    {
+      "productName": "MegaGadget",
+      "launchYear": 2018,
+      "features": {
+        "featureA": true,
+        "featureB": true,
+        "featureC": "standard"
+      }
+    }
+  ]
+}
