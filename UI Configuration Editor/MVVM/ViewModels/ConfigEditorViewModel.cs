@@ -39,11 +39,36 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
         public ObservableCollection<EnvAccessMode> EnvTypeOptions { get; } = new ObservableCollection<EnvAccessMode>();
 
+        //public ObservableCollection<ComboOptions> RegTypeOptions { get; } = new ObservableCollection<ComboOptions>()
+        //{
+        //    new ComboOptions() { Name = "-- Select an option --" , Tag = null},
+        //    new ComboOptions() { Name = RegPath.User.ToString() , Tag = RegPath.User.ToString()},
+        //    new ComboOptions() { Name = RegPath.Machine.ToString() , Tag = RegPath.Machine.ToString() },
+        //};
+
+        public ObservableCollection<RegPath> RegTypeOptions { get; } = new ObservableCollection<RegPath>();
+
+        private string? _selectedRegType;
+        public string? SelectedRegType
+        {
+            get => _selectedRegType;
+            set => SetProperty(ref _selectedRegType, value);
+        }
+
         private string _selectedPanel;
         public string SelectedPanel
         {
             get => _selectedPanel;
-            set => SetProperty(ref _selectedPanel, value);
+            set
+            {
+                if (SetProperty(ref _selectedPanel, value))
+                {
+                    if (value != "Reg")
+                    {
+                        SelectedRegType = null;
+                    }
+                }
+            }
         }
 
         public DelegateCommand SaveCommand { get; private set; }
@@ -60,6 +85,11 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                 {
                     EnvTypeOptions.Add(value);
                 }
+            }
+
+            foreach (RegPath value in Enum.GetValues(typeof(RegPath)))
+            {
+                RegTypeOptions.Add(value);
             }
 
             SaveCommand = new DelegateCommand(OnSave).ObservesCanExecute(() => CanSave);

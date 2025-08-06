@@ -12,7 +12,7 @@
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" ShadowDepth="5" />
         </Border.Effect>
-        <Grid Background="Transparent" Margin="0,15,0,0">
+        <Grid Background="Transparent" Margin="5,15,5,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -41,7 +41,7 @@
                               Width="Auto" Height="25" 
                               Background="White"
                               Padding="0,0,2,0"
-                              Margin="93,0,15,0" ItemsSource="{Binding ConfigOptions}"
+                              Margin="66,0,15,0" ItemsSource="{Binding ConfigOptions}"
                               DisplayMemberPath="Name" SelectedValuePath="Tag"
                               SelectedValue="{Binding SelectedPanel, Mode=TwoWay}"/>
                 </Grid>
@@ -64,13 +64,47 @@
                         </Style>
                     </StackPanel.Style>
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
-                        <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="100,0,15,0"/>
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                            <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="110,0,15,0"/>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
+                            <Label Grid.Column="0" Content="Reg Type:" FontWeight="Bold"/>
+                            <!--<ComboBox x:Name="RegSettingsSelector" Grid.Column="1" 
+                                  HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Center"
+                                  Width="Auto" Height="25" 
+                                  Background="White"
+                                  Padding="0,0,2,0"
+                                  Margin="110,0,15,0" ItemsSource="{Binding RegTypeOptions}"
+                                  DisplayMemberPath="Name" SelectedValuePath="Tag"
+                                  SelectedItem="{Binding SelectedRegType, Mode=TwoWay}"/>-->
+                            <ComboBox x:Name="RegSettingsSelector" Grid.Column="1" 
+                                  HorizontalAlignment="Stretch" 
+                                  VerticalAlignment="Center"
+                                  Width="Auto" Height="25" 
+                                  Background="White"
+                                  Padding="0,0,2,0"
+                                  Margin="110,0,15,0" ItemsSource="{Binding RegTypeOptions}"
+                                  SelectedItem="{Binding SelectedRegType, Mode=TwoWay}"/>
+                        </Grid>
+
+                        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                            <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="110,0,15,0"/>
+                        </Grid>
+
                     </Grid>
                 </StackPanel>
                 
@@ -94,27 +128,21 @@
                     
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Row="0" Margin="0,10,0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="100,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="110,0,15,0"/>
                         </Grid>
 
-                        <Grid Grid.Row="1" Margin="0,0,0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Type:" FontWeight="Bold"/>
                             <ComboBox x:Name="EnvSettingsSelector" Grid.Column="1" 
                               HorizontalAlignment="Stretch" 
@@ -122,9 +150,36 @@
                               Width="Auto" Height="25" 
                               Background="White"
                               Padding="0,0,2,0"
-                              Margin="99,0,15,0" ItemsSource="{Binding EnvTypeOptions}"/>
+                              Margin="110,0,15,0" ItemsSource="{Binding EnvTypeOptions}"/>
                         </Grid>
-                        
+
+                        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                            <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="110,0,15,0"/>
+                        </Grid>
+
+                    </Grid>
+                </StackPanel>
+
+                <StackPanel x:Name="EnvFilePanel" Grid.Row="1">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger x:Name="EnvFilePanelTrg" Binding="{Binding SelectedPanel}" Value="EnvFile">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource SlideInStoryboard}" />
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource SlideOutStoryboard}" />
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+
+                    <Grid>
                     </Grid>
                 </StackPanel>
             </Grid>
