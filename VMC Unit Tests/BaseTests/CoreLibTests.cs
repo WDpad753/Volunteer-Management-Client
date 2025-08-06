@@ -8,6 +8,7 @@ using BaseLogger;
 using BaseLogger.Models;
 using Newtonsoft.Json;
 using System.Collections;
+using System.Diagnostics;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
 
@@ -202,9 +203,7 @@ namespace VMC_Unit_Tests.BaseTests
 
             if (jsonRes != null || jsonRes != default)
             {
-                //Assert.That(val == res, "Value is not equal after modification");
-
-                //configReader.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
+                Assert.That(jsonRes.Any(res => res.Value.ToString().Equals(val)));
             }
             else
             {
