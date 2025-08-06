@@ -185,6 +185,8 @@ namespace VMC_Unit_Tests.BaseTests
         [Test]
         public void JsonSearchTest()
         {
+            string val = "Alice Smith";
+
             string filepath = PathCombine.CombinePath(CombinationType.Folder, jsonTestFilesPath, "JsonFile1.json");
 
             var JsonOutput = baseConfig.JSONFileHandler.GetJson<object>(filepath);
@@ -196,9 +198,9 @@ namespace VMC_Unit_Tests.BaseTests
 
             string json = JsonConvert.SerializeObject(JsonOutput);
 
-            var jsonVal = baseConfig.JSONFileHandler.ValueSearch(json, "manager");
+            var jsonRes = baseConfig.JSONFileHandler.ValueSearch(json, "manager");
 
-            if (jsonVal != null || jsonVal != default)
+            if (jsonRes != null || jsonRes != default)
             {
                 //Assert.That(val == res, "Value is not equal after modification");
 

@@ -11,6 +11,9 @@
 *.sln.docstates
 *.env
 
+# But do NOT ignore keep.log
+!VMC Unit Tests/Config/EnvFileTest.env
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
