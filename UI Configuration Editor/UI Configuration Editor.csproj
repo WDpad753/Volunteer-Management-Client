@@ -66,6 +66,7 @@
 		</When>
 	</Choose>-->
 
+	
   <ItemGroup>
     <ProjectReference Include="..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
     <ProjectReference Include="..\BaseClassLibrary\BaseClass\BaseClass.csproj" />
