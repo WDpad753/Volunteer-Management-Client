@@ -36,6 +36,13 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             new ComboOptions() { Name = "Environment File", Tag = "EnvFile" },
             new ComboOptions() { Name = "JSON File", Tag = "JsonFile" },
         };
+        public ObservableCollection<ComboOptions> DatabaseOptions { get; } = new ObservableCollection<ComboOptions>()
+        {
+            new ComboOptions() { Name = "-- Select an DB Type --", Tag = null },
+            new ComboOptions() { Name = "MSSQL", Tag = "SQLSERV" },
+            new ComboOptions() { Name = "PostGres", Tag = "PG" },
+            new ComboOptions() { Name = "SQLite", Tag = "SQLITE" },
+        };
 
         public ObservableCollection<EnvAccessMode> EnvTypeOptions { get; } = new ObservableCollection<EnvAccessMode>();
 
@@ -55,6 +62,13 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             set => SetProperty(ref _selectedRegType, value);
         }
 
+        private string? _selectedEnvType;
+        public string? SelectedEnvType
+        {
+            get => _selectedEnvType;
+            set => SetProperty(ref _selectedEnvType, value);
+        }
+
         private string _selectedPanel;
         public string SelectedPanel
         {
@@ -67,6 +81,81 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                     {
                         SelectedRegType = null;
                     }
+                    if(value != "Env")
+                    {
+                        SelectedEnvType = null;
+                    }
+                }
+            }
+        }
+
+        private string _MSSQLServer;
+        public string MSSQLServer
+        {
+            get => _MSSQLServer;
+            set
+            {
+                SetProperty(ref _MSSQLServer, value);
+                UpdateCanSave();
+            }
+        }
+        private string _MSSQLFailover;
+        public string MSSQLFailover
+        {
+            get => _MSSQLFailover;
+            set
+            {
+                SetProperty(ref _MSSQLFailover, value);
+                UpdateCanSave();
+            }
+        }
+        private string _MSSQLDB;
+        public string MSSQLDB
+        {
+            get => _MSSQLDB;
+            set
+            {
+                SetProperty(ref _MSSQLDB, value);
+                UpdateCanSave();
+            }
+        }
+        private string _MSSQLUserName;
+        public string MSSQLUserName
+        {
+            get => _MSSQLUserName;
+            set
+            {
+                SetProperty(ref _MSSQLUserName, value);
+                UpdateCanSave();
+            }
+        }
+        private string _MSSQLPassword;
+        public string MSSQLPassword
+        {
+            get => _MSSQLPassword;
+            set 
+            {
+                SetProperty(ref _MSSQLPassword, value);
+                UpdateCanSave(); 
+            }
+        }
+
+        private string _selectedDBPanel;
+        public string SelectedDBPanel
+        {
+            get => _selectedDBPanel;
+            set
+            {
+                if (SetProperty(ref _selectedDBPanel, value))
+                {
+                    if (value != "SQLSERV")
+                    {
+                        MSSQLServer = "";
+                        MSSQLFailover = "";
+                        MSSQLDB = "";
+                        MSSQLUserName = "";
+                        MSSQLPassword = "";
+                    }
                 }
             }
         }
@@ -77,7 +166,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
         {
             _containerProvider = containerProvider;
             baseConfig = baseSettings;
-            _canSave = true;
+            //_canSave = true;
 
             foreach (EnvAccessMode value in Enum.GetValues(typeof(EnvAccessMode)))
             {
@@ -95,11 +184,17 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             SaveCommand = new DelegateCommand(OnSave).ObservesCanExecute(() => CanSave);
         }
 
+        private void UpdateCanSave()
+        {
+            CanSave = !string.IsNullOrWhiteSpace(MSSQLServer) &&
+                      !string.IsNullOrWhiteSpace(MSSQLFailover);
+        }
+
         private void OnSave()
         {
-            baseConfig.Messagebox.Show("Save Successful", DialogTitle.Info, DialogButtons.Ok);
+            baseConfig.Messagebox?.Show("Save Successful.", DialogTitle.Info, DialogButtons.Ok);
 
-            baseConfig.Logger.LogWrite("Save Successful", this.GetType().Name, FuncName.GetMethodName(), BaseLogger.Models.MessageLevels.Log);
+            baseConfig.Logger?.LogWrite("Save Successful", this.GetType().Name, FuncName.GetMethodName(), BaseLogger.Models.MessageLevels.Log);
 
             //// Close ShellWindow
             //Application.Current.Windows.OfType<ShellWindow>().FirstOrDefault()?.Close();
