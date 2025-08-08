@@ -159,8 +159,8 @@ jobs:
           run: where msbuild
 
         - name: Build main project
-          # run: dotnet build "${{ env.Main_Project_Path }}" --configuration ${{ matrix.configuration }}
-          run: msbuild "${{ env.Solution_Name }}" /p:Configuration=${{ matrix.configuration }}
+          run: dotnet build "${{ env.Main_Project_Path }}" --configuration ${{ matrix.configuration }}
+          # run: msbuild "${{ env.Solution_Name }}" /p:Configuration=${{ matrix.configuration }}
 
         # # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
         # - name: Setup MSBuild.exe
