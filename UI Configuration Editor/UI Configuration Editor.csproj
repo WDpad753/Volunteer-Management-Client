@@ -39,15 +39,7 @@
 	    <ProjectReference Include="$(CustomErrorB)" />
     </ItemGroup>-->
 
-	<Choose>
-		<When Condition="Exists('..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj')">
-			<ItemGroup>
-				<ProjectReference Include="..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
-			</ItemGroup>
-			<PropertyGroup>
-				<UIBaseClassFound>true</UIBaseClassFound>
-			</PropertyGroup>
-		</When>
+	<!--<Choose>
 		<When Condition="Exists('..\UIBaseClass\UIBaseClass\UIBaseClass.csproj')">
 			<ItemGroup>
 				<ProjectReference Include="..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
@@ -56,9 +48,26 @@
 				<UIBaseClassFound>true</UIBaseClassFound>
 			</PropertyGroup>
 		</When>
-	</Choose>
-	
+		<When Condition="Exists('..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj')">
+			<ItemGroup>
+				<ProjectReference Include="..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
+			</ItemGroup>
+			<PropertyGroup>
+				<UIBaseClassFound>true</UIBaseClassFound>
+			</PropertyGroup>
+		</When>
+		<When Condition="Exists('..\..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj')">
+			<ItemGroup>
+				<ProjectReference Include="..\..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
+			</ItemGroup>
+			<PropertyGroup>
+				<UIBaseClassFound>true</UIBaseClassFound>
+			</PropertyGroup>
+		</When>
+	</Choose>-->
+
   <ItemGroup>
+    <ProjectReference Include="..\..\UIBaseClass\UIBaseClass\UIBaseClass.csproj" />
     <ProjectReference Include="..\BaseClassLibrary\BaseClass\BaseClass.csproj" />
     <ProjectReference Include="..\BaseClassLibrary\BaseLogger\BaseLogger.csproj" />
   </ItemGroup>
