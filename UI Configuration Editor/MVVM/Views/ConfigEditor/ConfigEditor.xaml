@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_Configuration_Editor"
         xmlns:button="clr-namespace:UIBaseClass.Controls.StyleCommands;assembly=UIBaseClass"
-        xmlns:Password="clr-namespace:UI_Configuration_Editor.Controls.Passwordbox"
+        xmlns:Password="clr-namespace:UIBaseClass.Controls.Passwordbox;assembly=UIBaseClass"
         mc:Ignorable="d"
         Background="{x:Null}">
+
+    <!--xmlns:Password="clr-namespace:UI_Configuration_Editor.Controls.Passwordbox"-->
 
     <Border Background="LightGray" CornerRadius="0,0,15,15">
         <Border.Effect>
