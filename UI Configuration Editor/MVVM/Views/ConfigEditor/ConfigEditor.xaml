@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_Configuration_Editor"
         xmlns:button="clr-namespace:UIBaseClass.Controls.StyleCommands;assembly=UIBaseClass"
-        xmlns:Password="clr-namespace:UIBaseClass.Styles.Passwords;assembly=UIBaseClass"
+        xmlns:Password="clr-namespace:UI_Configuration_Editor.Controls.Passwordbox"
         mc:Ignorable="d"
         Background="{x:Null}">
 
@@ -27,6 +27,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -36,6 +37,18 @@
                 <!-- Main Setup -->
                 <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,10">
 
+                    <Label Grid.Column="0" Content="Encryption:" FontWeight="Bold"/>
+                    <ComboBox x:Name="EncryptionSelector" Grid.Column="1" 
+                              HorizontalAlignment="Stretch"
+                              HorizontalContentAlignment="Center"
+                              VerticalAlignment="Center"
+                              Width="Auto" Height="25" 
+                              Background="White"
+                              Padding="0,0,2,0"
+                              Margin="80,0,15,0" ItemsSource="{Binding EncTypeOptions}"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10">
                     <Label Grid.Column="0" Content="Setup:" FontWeight="Bold"/>
                     <ComboBox x:Name="SettingsSelector" Grid.Column="1" 
                               HorizontalAlignment="Stretch"
@@ -49,7 +62,7 @@
                               SelectedValue="{Binding SelectedPanel, Mode=TwoWay}"/>
                 </Grid>
 
-                <StackPanel x:Name="NonePanel" Grid.ColumnSpan="2" Grid.Row="1" >
+                <StackPanel x:Name="NonePanel" Grid.ColumnSpan="2" Grid.Row="2" >
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -68,7 +81,7 @@
                     </StackPanel.Style>
                 </StackPanel>
 
-                <StackPanel x:Name="RegPanel" Grid.ColumnSpan="2" Grid.Row="1">
+                <StackPanel x:Name="RegPanel" Grid.ColumnSpan="2" Grid.Row="2">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -96,7 +109,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>-->
 
-                        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5">
                             <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
                             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
@@ -123,7 +136,7 @@
                                   SelectedItem="{Binding SelectedRegType, Mode=TwoWay}"/>
                         </Grid>
 
-                        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
                             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
@@ -131,7 +144,7 @@
                     </Grid>
                 </StackPanel>
                 
-                <StackPanel x:Name="EnvPanel" Grid.ColumnSpan="2" Grid.Row="1">
+                <StackPanel x:Name="EnvPanel" Grid.ColumnSpan="2" Grid.Row="2">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -160,7 +173,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>-->
 
-                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,0">
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5">
                             <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
                             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
@@ -178,7 +191,7 @@
                               SelectedItem="{Binding SelectedEnvType, Mode=TwoWay}"/>
                         </Grid>
 
-                        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
                             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
@@ -186,7 +199,7 @@
                     </Grid>
                 </StackPanel>
 
-                <StackPanel x:Name="EnvFilePanel" Grid.ColumnSpan="2" Grid.Row="1">
+                <StackPanel x:Name="EnvFilePanel" Grid.ColumnSpan="2" Grid.Row="2">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -214,7 +227,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>-->
 
-                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,0">
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5">
                             <Label Grid.Column="0" Content="File Path:" FontWeight="Bold"/>
                             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
@@ -227,7 +240,7 @@
                     </Grid>
                 </StackPanel>
 
-                <StackPanel x:Name="JsonFilePanel" Grid.ColumnSpan="2" Grid.Row="1">
+                <StackPanel x:Name="JsonFilePanel" Grid.ColumnSpan="2" Grid.Row="2">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -255,7 +268,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>-->
 
-                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,0">
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5">
                             <Label Grid.Column="0" Content="File Path:" FontWeight="Bold"/>
                             <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
@@ -269,7 +282,7 @@
                 </StackPanel>
 
                 <!-- DB Setup -->
-                <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,10">
+                <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,10">
                     <Label Grid.Column="0" Content="DB Setup:" FontWeight="Bold"/>
                     <ComboBox x:Name="DBSelector" Grid.Column="1" 
                               HorizontalAlignment="Stretch" 
@@ -283,7 +296,7 @@
                               SelectedValue="{Binding SelectedDBPanel, Mode=TwoWay}"/>
                 </Grid>
 
-                <StackPanel x:Name="NoneDBPanel" Grid.ColumnSpan="2" Grid.Row="3" >
+                <StackPanel x:Name="NoneDBPanel" Grid.ColumnSpan="2" Grid.Row="4" >
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -302,7 +315,7 @@
                     </StackPanel.Style>
                 </StackPanel>
 
-                <StackPanel x:Name="MSSQLPanel" Grid.ColumnSpan="2" Grid.Row="3">
+                <StackPanel x:Name="MSSQLPanel" Grid.ColumnSpan="2" Grid.Row="4">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -357,7 +370,7 @@
                     </Grid>
                 </StackPanel>
                 
-                <StackPanel x:Name="PGPanel" Grid.ColumnSpan="2" Grid.Row="3">
+                <StackPanel x:Name="PGPanel" Grid.ColumnSpan="2" Grid.Row="4">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -406,7 +419,7 @@
                     </Grid>
                 </StackPanel>
                 
-                <StackPanel x:Name="SQLitePanel" Grid.ColumnSpan="2" Grid.Row="3">
+                <StackPanel x:Name="SQLitePanel" Grid.ColumnSpan="2" Grid.Row="4">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
                             <Setter Property="Visibility" Value="Collapsed" />
@@ -443,7 +456,7 @@
                                 <Label Grid.Column="0" Content="DB Path:" FontWeight="Bold"/>
                                 <!--<Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>-->
                                 <Password:CustomPasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>
-                                <CheckBox x:Name="DBLite_PassReq" Grid.Column="2" Checked="DBLite_PassReq_Checked" HorizontalContentAlignment="Center" Margin="5,0,0,0" Background="White" >
+                                <CheckBox Style="{DynamicResource CheckBoxStyle}"  x:Name="DBLite_PassReq" Grid.Column="2" Checked="DBLite_PassReq_Checked" HorizontalContentAlignment="Center" Margin="5,0,15,0" Background="White" IsThreeState="True" >
                                     <TextBlock TextWrapping="Wrap" Text="Password Required" Width="50" />
                                 </CheckBox>
                             <!--</Grid>-->

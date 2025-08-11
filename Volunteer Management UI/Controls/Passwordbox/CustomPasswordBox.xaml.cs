@@ -18,7 +18,7 @@ namespace Volunteer_Management_UI.Controls.Passwordbox
     /// <summary>
     /// Interaction logic for BasePasswordBox.xaml
     /// </summary>
-    public partial class BasePasswordBox : UserControl
+    public partial class CustomPasswordBox : UserControl
     {
         private bool _isPasswordChanging;
 
@@ -28,12 +28,12 @@ namespace Volunteer_Management_UI.Controls.Passwordbox
         //            PasswordPropertyChanged, null, false, UpdateSourceTrigger.PropertyChanged));
 
         public static readonly DependencyProperty PasswordProperty =
-            DependencyProperty.Register("Password", typeof(string), typeof(BasePasswordBox),
+            DependencyProperty.Register("Password", typeof(string), typeof(CustomPasswordBox),
                 new PropertyMetadata(string.Empty, PasswordPropertyChanged));
 
         private static void PasswordPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is BasePasswordBox passwordBox)
+            if (d is CustomPasswordBox passwordBox)
             {
                 passwordBox.UpdatePassword();
             }
@@ -44,7 +44,7 @@ namespace Volunteer_Management_UI.Controls.Passwordbox
             get { return (string)GetValue(PasswordProperty); }
             set { SetValue(PasswordProperty, value); }
         }
-        public BasePasswordBox()
+        public CustomPasswordBox()
         {
             InitializeComponent();
         }

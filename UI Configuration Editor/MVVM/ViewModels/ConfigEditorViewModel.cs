@@ -36,6 +36,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             new ComboOptions() { Name = "Environment File", Tag = "EnvFile" },
             new ComboOptions() { Name = "JSON File", Tag = "JsonFile" },
         };
+
         public ObservableCollection<ComboOptions> DatabaseOptions { get; } = new ObservableCollection<ComboOptions>()
         {
             new ComboOptions() { Name = "-- Select an DB Type --", Tag = null },
@@ -44,6 +45,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             new ComboOptions() { Name = "SQLite", Tag = "SQLITE" },
         };
 
+        public ObservableCollection<EncryptionMode> EncTypeOptions { get; } = new ObservableCollection<EncryptionMode>();
         public ObservableCollection<EnvAccessMode> EnvTypeOptions { get; } = new ObservableCollection<EnvAccessMode>();
 
         //public ObservableCollection<ComboOptions> RegTypeOptions { get; } = new ObservableCollection<ComboOptions>()
@@ -200,6 +202,11 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             foreach (RegPath value in Enum.GetValues(typeof(RegPath)))
             {
                 RegTypeOptions.Add(value);
+            }
+
+            foreach (EncryptionMode value in Enum.GetValues(typeof(EncryptionMode)))
+            {
+                EncTypeOptions.Add(value);
             }
 
             SaveCommand = new DelegateCommand(OnSave).ObservesCanExecute(() => CanSave);

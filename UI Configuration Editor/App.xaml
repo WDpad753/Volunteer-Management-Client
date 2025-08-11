@@ -13,6 +13,8 @@
                 <ResourceDictionary Source="/UIBaseClass;component/Styles/Buttons/Theme/ButtonTheme.xaml"/>
                 <!-- Animation Style -->
                 <ResourceDictionary Source="/UIBaseClass;component/Styles/Animation/AnimationTheme.xaml"/>
+                <!-- Checkboxes Style -->
+                <ResourceDictionary Source="/UIBaseClass;component/Styles/Checkboxes/Themes/CustomCheckBoxes.xaml"/>
                 <!-- Material Design Dictionaries -->
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
