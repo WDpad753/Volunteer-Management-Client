@@ -98,4 +98,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Controls\Passwordbox\BasePasswordBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

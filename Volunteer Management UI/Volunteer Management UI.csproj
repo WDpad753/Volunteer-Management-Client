@@ -60,6 +60,12 @@
 		<ProjectReference Include="..\Custom-Message-Box\CustomMessageBox\CustomMessageBox.csproj" />
 		<ProjectReference Include="..\UI Configuration Editor\UI Configuration Editor.csproj" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Controls\Passwordbox\BasePasswordBox.xaml.cs">
+	    <SubType>Code</SubType>
+	  </Compile>
+	</ItemGroup>
 		
 	<ItemGroup>
 	  <None Update="Config\App.config">

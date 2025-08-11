@@ -89,53 +89,63 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             }
         }
 
-        private string _MSSQLServer;
-        public string MSSQLServer
+        private string _DBServer;
+        public string DBServer
         {
-            get => _MSSQLServer;
+            get => _DBServer;
             set
             {
-                SetProperty(ref _MSSQLServer, value);
+                SetProperty(ref _DBServer, value);
                 UpdateCanSave();
             }
         }
-        private string _MSSQLFailover;
-        public string MSSQLFailover
+        private string _DBFailover;
+        public string DBFailover
         {
-            get => _MSSQLFailover;
+            get => _DBFailover;
             set
             {
-                SetProperty(ref _MSSQLFailover, value);
+                SetProperty(ref _DBFailover, value);
                 UpdateCanSave();
             }
         }
-        private string _MSSQLDB;
-        public string MSSQLDB
+        private string _DataBase;
+        public string DataBase
         {
-            get => _MSSQLDB;
+            get => _DataBase;
             set
             {
-                SetProperty(ref _MSSQLDB, value);
+                SetProperty(ref _DataBase, value);
                 UpdateCanSave();
             }
         }
-        private string _MSSQLUserName;
-        public string MSSQLUserName
+        private string _DBUserName;
+        public string DBUserName
         {
-            get => _MSSQLUserName;
+            get => _DBUserName;
             set
             {
-                SetProperty(ref _MSSQLUserName, value);
+                SetProperty(ref _DBUserName, value);
                 UpdateCanSave();
             }
         }
-        private string _MSSQLPassword;
-        public string MSSQLPassword
+        private string _DBPassword;
+        public string DBPassword
         {
-            get => _MSSQLPassword;
+            get => _DBPassword;
             set 
             {
-                SetProperty(ref _MSSQLPassword, value);
+                SetProperty(ref _DBPassword, value);
+                UpdateCanSave(); 
+            }
+        }
+        private string _DBPath;
+        public string DBPath
+        {
+            get => _DBPath;
+            set 
+            {
+                SetProperty(ref _DBPath, value);
                 UpdateCanSave(); 
             }
         }
@@ -150,11 +160,22 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                 {
                     if (value != "SQLSERV")
                     {
-                        MSSQLServer = "";
-                        MSSQLFailover = "";
-                        MSSQLDB = "";
-                        MSSQLUserName = "";
-                        MSSQLPassword = "";
+                        DBServer = "";
+                        DBFailover = "";
+                        DataBase = "";
+                        DBUserName = "";
+                        DBPassword = "";
+                    }
+                    if (value != "PG")
+                    {
+                        DBServer = "";
+                        DataBase = "";
+                        DBUserName = "";
+                        DBPassword = "";
+                    }
+                    if (value != "SQLITE")
+                    {
+                        DBPath = "";
                     }
                 }
             }
@@ -186,8 +207,8 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
         private void UpdateCanSave()
         {
-            CanSave = !string.IsNullOrWhiteSpace(MSSQLServer) &&
-                      !string.IsNullOrWhiteSpace(MSSQLFailover);
+            CanSave = !string.IsNullOrWhiteSpace(DBServer) &&
+                      !string.IsNullOrWhiteSpace(DBFailover);
         }
 
         private void OnSave()

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_Configuration_Editor"
         xmlns:button="clr-namespace:UIBaseClass.Controls.StyleCommands;assembly=UIBaseClass"
-        xmlns:password="clr-namespace:UIBaseClass.Controls.Passwordbox;assembly=UIBaseClass"
+        xmlns:Password="clr-namespace:UI_Configuration_Editor.Controls.Passwordbox"
         mc:Ignorable="d"
         Background="{x:Null}">
 
@@ -42,7 +42,7 @@
                               Width="Auto" Height="25" 
                               Background="White"
                               Padding="0,0,2,0"
-                              Margin="66,0,15,0" ItemsSource="{Binding ConfigOptions}"
+                              Margin="80,0,15,0" ItemsSource="{Binding ConfigOptions}"
                               DisplayMemberPath="Name" SelectedValuePath="Tag"
                               SelectedValue="{Binding SelectedPanel, Mode=TwoWay}"/>
                 </Grid>
@@ -96,7 +96,7 @@
 
                         <Grid Grid.Row="0" Grid.ColumnSpan="2">
                             <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
@@ -117,13 +117,13 @@
                                   Width="Auto" Height="25" 
                                   Background="White"
                                   Padding="0,0,2,0"
-                                  Margin="65,0,15,0" ItemsSource="{Binding RegTypeOptions}"
+                                  Margin="80,0,15,0" ItemsSource="{Binding RegTypeOptions}"
                                   SelectedItem="{Binding SelectedRegType, Mode=TwoWay}"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.ColumnSpan="2">
                             <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                     </Grid>
@@ -160,7 +160,7 @@
 
                         <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,0">
                             <Label Grid.Column="0" Content="Path:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
@@ -172,13 +172,13 @@
                               Width="Auto" Height="25" 
                               Background="White"
                               Padding="0,0,2,0"
-                              Margin="65,0,15,0" ItemsSource="{Binding EnvTypeOptions}"
+                              Margin="80,0,15,0" ItemsSource="{Binding EnvTypeOptions}"
                               SelectedItem="{Binding SelectedEnvType, Mode=TwoWay}"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.ColumnSpan="2">
                             <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                     </Grid>
@@ -214,12 +214,12 @@
 
                         <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,0">
                             <Label Grid.Column="0" Content="File Path:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                     </Grid>
@@ -255,12 +255,12 @@
 
                         <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,0">
                             <Label Grid.Column="0" Content="File Path:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Key:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                     </Grid>
@@ -276,7 +276,7 @@
                               Width="Auto" Height="25" 
                               Background="White"
                               Padding="0,0,2,0"
-                              Margin="66,0,15,0" ItemsSource="{Binding DatabaseOptions}"
+                              Margin="80,0,15,0" ItemsSource="{Binding DatabaseOptions}"
                               DisplayMemberPath="Name" SelectedValuePath="Tag"
                               SelectedValue="{Binding SelectedDBPanel, Mode=TwoWay}"/>
                 </Grid>
@@ -326,29 +326,29 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5">
                             <Label Grid.Column="0" Content="Server:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" Text="{Binding MSSQLServer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" Text="{Binding DBServer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Failover:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" Text="{Binding MSSQLFailover, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" Text="{Binding DBFailover, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Database:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" Text="{Binding MSSQLDB, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" Text="{Binding DataBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Username:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" Text="{Binding MSSQLUserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" Text="{Binding DBUserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="4" Grid.ColumnSpan="2" Margin="0,5,0,0">
                             <Label Grid.Column="0" Content="Password:" FontWeight="Bold"/>
-                            <password:BasePasswordBox Password="{Binding MSSQLPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                     </Grid>
@@ -377,34 +377,72 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5">
                             <Label Grid.Column="0" Content="Server:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" Text="{Binding PGServer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" Text="{Binding DBServer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,5,0,5">
-                            <Label Grid.Column="0" Content="Failover:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <Label Grid.Column="0" Content="Database:" FontWeight="Bold"/>
+                            <TextBox Grid.Column="1" Text="{Binding DataBase, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                         <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5">
-                            <Label Grid.Column="0" Content="Database:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
-                        </Grid>
-
-                        <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,5">
                             <Label Grid.Column="0" Content="Username:" FontWeight="Bold"/>
-                            <TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <TextBox Grid.Column="1" Text="{Binding DBUserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
-                        <Grid Grid.Row="4" Grid.ColumnSpan="2" Margin="0,5,0,0">
+                        <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,0">
                             <Label Grid.Column="0" Content="Password:" FontWeight="Bold"/>
-                            <PasswordBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="65,0,15,0"/>
+                            <Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
+                    </Grid>
+                </StackPanel>
+                
+                <StackPanel x:Name="SQLitePanel" Grid.ColumnSpan="2" Grid.Row="3">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger x:Name="SQLitePanelTrg" Binding="{Binding SelectedDBPanel}" Value="SQLITE">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard Storyboard="{StaticResource SlideInStoryboard}" />
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard Storyboard="{StaticResource SlideOutStoryboard}" />
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,5">
+                            <Label Grid.Column="0" Content="DB Path:" FontWeight="Bold"/>
+                            <TextBox Grid.Column="1" Text="{Binding DBPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,5">
+                            <!--<Grid>-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="DB Path:" FontWeight="Bold"/>
+                                <Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>
+                                <CheckBox x:Name="DBLite_PassReq" Grid.Column="2" Checked="DBLite_PassReq_Checked" HorizontalContentAlignment="Center" Margin="5,0,0,0" Background="White" >
+                                    <TextBlock TextWrapping="Wrap" Text="Password Required" Width="50" />
+                                </CheckBox>
+                            <!--</Grid>-->
+                        </Grid>
                     </Grid>
                 </StackPanel>
             </Grid>

@@ -30,5 +30,10 @@ namespace UI_Configuration_Editor.MVVM.Views.ConfigEditor
 
             InitializeComponent();
         }
+
+        private void DBLite_PassReq_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
