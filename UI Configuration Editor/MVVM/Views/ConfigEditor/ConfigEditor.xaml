@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI_Configuration_Editor"
         xmlns:button="clr-namespace:UIBaseClass.Controls.StyleCommands;assembly=UIBaseClass"
-        xmlns:Password="clr-namespace:UIBaseClass.Controls.Passwordbox;assembly=UIBaseClass"
+        xmlns:Password="clr-namespace:UIBaseClass.Styles.Passwords;assembly=UIBaseClass"
         mc:Ignorable="d"
         Background="{x:Null}">
 
@@ -350,7 +350,8 @@
 
                         <Grid Grid.Row="4" Grid.ColumnSpan="2" Margin="0,5,0,0">
                             <Label Grid.Column="0" Content="Password:" FontWeight="Bold"/>
-                            <Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
+                            <!--<Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>-->
+                            <Password:CustomPasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                     </Grid>
@@ -398,7 +399,8 @@
 
                         <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,5,0,0">
                             <Label Grid.Column="0" Content="Password:" FontWeight="Bold"/>
-                            <Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
+                            <!--<Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>-->
+                            <Password:CustomPasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="80,0,15,0"/>
                         </Grid>
 
                     </Grid>
@@ -439,7 +441,8 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Content="DB Path:" FontWeight="Bold"/>
-                                <Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>
+                                <!--<Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>-->
+                                <Password:CustomPasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>
                                 <CheckBox x:Name="DBLite_PassReq" Grid.Column="2" Checked="DBLite_PassReq_Checked" HorizontalContentAlignment="Center" Margin="5,0,0,0" Background="White" >
                                     <TextBlock TextWrapping="Wrap" Text="Password Required" Width="50" />
                                 </CheckBox>
