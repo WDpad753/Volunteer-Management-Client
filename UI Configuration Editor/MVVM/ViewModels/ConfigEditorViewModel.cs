@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using UI_Configuration_Editor.MVVM.Models;
 using UI_Configuration_Editor.MVVM.Views.ConfigEditor;
 using UI_Configuration_Editor.MVVM.Views.Shell_Window;
@@ -21,6 +22,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
     {
         private readonly IContainerProvider _containerProvider;
         private readonly IBase baseConfig;
+        public ConfigEditorModel ConfigEditorMdl { get; }
         private bool _canSave;
         public bool CanSave
         {
@@ -82,6 +84,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                     if (value != "Reg")
                     {
                         SelectedRegType = null;
+                        ConfigEditorMdl.RegPath = "";
                     }
                     if(value != "Env")
                     {
@@ -91,66 +94,73 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             }
         }
 
-        private string _DBServer;
-        public string DBServer
+        private string _selectedEncType;
+        public string SelectedEncType
         {
-            get => _DBServer;
-            set
-            {
-                SetProperty(ref _DBServer, value);
-                UpdateCanSave();
-            }
+            get => _selectedEncType;
+            set => SetProperty(ref _selectedEncType, value);
         }
-        private string _DBFailover;
-        public string DBFailover
-        {
-            get => _DBFailover;
-            set
-            {
-                SetProperty(ref _DBFailover, value);
-                UpdateCanSave();
-            }
-        }
-        private string _DataBase;
-        public string DataBase
-        {
-            get => _DataBase;
-            set
-            {
-                SetProperty(ref _DataBase, value);
-                UpdateCanSave();
-            }
-        }
-        private string _DBUserName;
-        public string DBUserName
-        {
-            get => _DBUserName;
-            set
-            {
-                SetProperty(ref _DBUserName, value);
-                UpdateCanSave();
-            }
-        }
-        private string _DBPassword;
-        public string DBPassword
-        {
-            get => _DBPassword;
-            set 
-            {
-                SetProperty(ref _DBPassword, value);
-                UpdateCanSave(); 
-            }
-        }
-        private string _DBPath;
-        public string DBPath
-        {
-            get => _DBPath;
-            set 
-            {
-                SetProperty(ref _DBPath, value);
-                UpdateCanSave(); 
-            }
-        }
+
+        //private string _DBServer;
+        //public string DBServer
+        //{
+        //    get => _DBServer;
+        //    set
+        //    {
+        //        SetProperty(ref _DBServer, value);
+        //        UpdateCanSave();
+        //    }
+        //}
+        //private string _DBFailover;
+        //public string DBFailover
+        //{
+        //    get => _DBFailover;
+        //    set
+        //    {
+        //        SetProperty(ref _DBFailover, value);
+        //        UpdateCanSave();
+        //    }
+        //}
+        //private string _DataBase;
+        //public string DataBase
+        //{
+        //    get => _DataBase;
+        //    set
+        //    {
+        //        SetProperty(ref _DataBase, value);
+        //        UpdateCanSave();
+        //    }
+        //}
+        //private string _DBUserName;
+        //public string DBUserName
+        //{
+        //    get => _DBUserName;
+        //    set
+        //    {
+        //        SetProperty(ref _DBUserName, value);
+        //        UpdateCanSave();
+        //    }
+        //}
+        //private string _DBPassword;
+        //public string DBPassword
+        //{
+        //    get => _DBPassword;
+        //    set 
+        //    {
+        //        SetProperty(ref _DBPassword, value);
+        //        UpdateCanSave(); 
+        //    }
+        //}
+        //private string _DBPath;
+        //public string DBPath
+        //{
+        //    get => _DBPath;
+        //    set 
+        //    {
+        //        SetProperty(ref _DBPath, value);
+        //        UpdateCanSave(); 
+        //    }
+        //}
 
         private string _selectedDBPanel;
         public string SelectedDBPanel
@@ -162,34 +172,65 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                 {
                     if (value != "SQLSERV")
                     {
-                        DBServer = "";
-                        DBFailover = "";
-                        DataBase = "";
-                        DBUserName = "";
-                        DBPassword = "";
+                        ConfigEditorMdl.DBServer = "";
+                        ConfigEditorMdl.DBFailover = "";
+                        ConfigEditorMdl.DataBase = "";
+                        ConfigEditorMdl.DBUserName = "";
+                        ConfigEditorMdl.DBPassword = "";
                     }
                     if (value != "PG")
                     {
-                        DBServer = "";
-                        DataBase = "";
-                        DBUserName = "";
-                        DBPassword = "";
+                        ConfigEditorMdl.DBServer = "";
+                        ConfigEditorMdl.DataBase = "";
+                        ConfigEditorMdl.DBUserName = "";
+                        ConfigEditorMdl.DBPassword = "";
                     }
                     if (value != "SQLITE")
                     {
-                        DBPath = "";
+                        ConfigEditorMdl.DBPath = "";
+                        ConfigEditorMdl.DBPassword = "";
                     }
                 }
             }
         }
 
+        private bool _IsPasswordBoxEnabled = false;
+        public bool IsPasswordBoxEnabled
+        {
+            get => _IsPasswordBoxEnabled;
+            //set => SetProperty(ref _IsPasswordBoxEnabled, value);
+            set
+            {
+                if (ConfigEditorMdl.DBPassword != null)
+                {
+                    ConfigEditorMdl.DBPassword = "";
+                    SetProperty(ref _IsPasswordBoxEnabled, value);
+                }
+                else
+                {
+                    SetProperty(ref _IsPasswordBoxEnabled, value);
+                }
+            }
+            //set
+            //{
+            //    if (_IsPasswordBoxEnabled != value)
+            //    {
+            //        _IsPasswordBoxEnabled = value;
+            //        SetProperty(ref _IsPasswordBoxEnabled, value);
+            //    }
+            //}
+        }
+
         public DelegateCommand SaveCommand { get; private set; }
+        //public DelegateCommand DBLitePassCommand { get; private set; }
 
         public ConfigEditorViewModel(IContainerProvider containerProvider, IBase baseSettings)
         {
             _containerProvider = containerProvider;
             baseConfig = baseSettings;
             //_canSave = true;
+
+            ConfigEditorMdl = new ConfigEditorModel();
 
             foreach (EnvAccessMode value in Enum.GetValues(typeof(EnvAccessMode)))
             {
@@ -209,13 +250,144 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                 EncTypeOptions.Add(value);
             }
 
+            ConfigEditorMdl.PropertyChanged += (s, e) => UpdateCanSave();
             SaveCommand = new DelegateCommand(OnSave).ObservesCanExecute(() => CanSave);
+            //DBLitePassCommand = new DelegateCommand(PassEnabled).ObservesCanExecute(() => IsPasswordBoxEnabled);
         }
 
         private void UpdateCanSave()
         {
-            CanSave = !string.IsNullOrWhiteSpace(DBServer) &&
-                      !string.IsNullOrWhiteSpace(DBFailover);
+            if(SelectedPanel == "Reg")
+            {
+                if (SelectedDBPanel == "SQLSERV")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.RegPath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.RegKey) &&
+                              !string.IsNullOrWhiteSpace(SelectedRegType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBFailover) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "PG")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.RegPath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.RegKey) &&
+                              !string.IsNullOrWhiteSpace(SelectedRegType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "SQLITE")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.RegPath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.RegKey) &&
+                              !string.IsNullOrWhiteSpace(SelectedRegType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+            }
+            else if(SelectedPanel == "Env")
+            {
+                if (SelectedDBPanel == "SQLSERV")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvKey) &&
+                              !string.IsNullOrWhiteSpace(SelectedEnvType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBFailover) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "PG")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvKey) &&
+                              !string.IsNullOrWhiteSpace(SelectedEnvType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "SQLITE")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvKey) &&
+                              !string.IsNullOrWhiteSpace(SelectedEnvType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+            }
+            else if (SelectedPanel == "EnvFile")
+            {
+                if (SelectedDBPanel == "SQLSERV")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvFilePath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvFileKey) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBFailover) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "PG")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvFilePath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvFileKey) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "SQLITE")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvFilePath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.EnvFileKey) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+            }
+            else if(SelectedPanel == "JsonFile")
+            {
+                if (SelectedDBPanel == "SQLSERV")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.JSONFilePath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.JSONFileKey) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBFailover) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "PG")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.JSONFilePath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.JSONFileKey) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBServer) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DataBase) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBUserName) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+                else if (SelectedDBPanel == "SQLITE")
+                {
+                    CanSave = !string.IsNullOrWhiteSpace(SelectedEncType) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.JSONFilePath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.JSONFileKey) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPath) &&
+                              !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
+                }
+            }
         }
 
         private void OnSave()
