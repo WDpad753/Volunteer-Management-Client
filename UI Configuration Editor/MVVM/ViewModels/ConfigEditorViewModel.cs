@@ -101,67 +101,6 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             set => SetProperty(ref _selectedEncType, value);
         }
 
-        //private string _DBServer;
-        //public string DBServer
-        //{
-        //    get => _DBServer;
-        //    set
-        //    {
-        //        SetProperty(ref _DBServer, value);
-        //        UpdateCanSave();
-        //    }
-        //}
-        //private string _DBFailover;
-        //public string DBFailover
-        //{
-        //    get => _DBFailover;
-        //    set
-        //    {
-        //        SetProperty(ref _DBFailover, value);
-        //        UpdateCanSave();
-        //    }
-        //}
-        //private string _DataBase;
-        //public string DataBase
-        //{
-        //    get => _DataBase;
-        //    set
-        //    {
-        //        SetProperty(ref _DataBase, value);
-        //        UpdateCanSave();
-        //    }
-        //}
-        //private string _DBUserName;
-        //public string DBUserName
-        //{
-        //    get => _DBUserName;
-        //    set
-        //    {
-        //        SetProperty(ref _DBUserName, value);
-        //        UpdateCanSave();
-        //    }
-        //}
-        //private string _DBPassword;
-        //public string DBPassword
-        //{
-        //    get => _DBPassword;
-        //    set 
-        //    {
-        //        SetProperty(ref _DBPassword, value);
-        //        UpdateCanSave(); 
-        //    }
-        //}
-        //private string _DBPath;
-        //public string DBPath
-        //{
-        //    get => _DBPath;
-        //    set 
-        //    {
-        //        SetProperty(ref _DBPath, value);
-        //        UpdateCanSave(); 
-        //    }
-        //}
-
         private string _selectedDBPanel;
         public string SelectedDBPanel
         {
@@ -198,7 +137,6 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
         public bool IsPasswordBoxEnabled
         {
             get => _IsPasswordBoxEnabled;
-            //set => SetProperty(ref _IsPasswordBoxEnabled, value);
             set
             {
                 if (ConfigEditorMdl.DBPassword != null)
@@ -211,14 +149,6 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                     SetProperty(ref _IsPasswordBoxEnabled, value);
                 }
             }
-            //set
-            //{
-            //    if (_IsPasswordBoxEnabled != value)
-            //    {
-            //        _IsPasswordBoxEnabled = value;
-            //        SetProperty(ref _IsPasswordBoxEnabled, value);
-            //    }
-            //}
         }
 
         public DelegateCommand SaveCommand { get; private set; }
@@ -392,12 +322,12 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
         private void OnSave()
         {
+            if(SelectedRegType)
+
+
             baseConfig.Messagebox?.Show("Save Successful.", DialogTitle.Info, DialogButtons.Ok);
 
             baseConfig.Logger?.LogWrite("Save Successful", this.GetType().Name, FuncName.GetMethodName(), BaseLogger.Models.MessageLevels.Log);
-
-            //// Close ShellWindow
-            //Application.Current.Windows.OfType<ShellWindow>().FirstOrDefault()?.Close();
         }
     }
 }

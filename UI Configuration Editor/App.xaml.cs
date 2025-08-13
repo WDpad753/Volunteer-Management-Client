@@ -65,6 +65,7 @@ namespace UI_Configuration_Editor
             baseSettings = new BaseSettings()
             {
                 Logger = logwriter,
+                ConfigPath = _configPath,
                 Messagebox = messageBox,
                 ErrorMessagebox = errorMessageBox
             };
