@@ -20,6 +20,8 @@ namespace VMC_Unit_Tests.BaseTests
         private LogWriter logwriter;
         private ConfigHandler configReader;
         private JSONFileHandler jsonFileHandler;
+        private EnvFileHandler envFileHandler;
+        private EnvHandler envHandler;
         private string logpath;
         private string configPath;
         private static string LaunchJsonConfigFilePath = @$"{AppDomain.CurrentDomain.BaseDirectory}Config\launchsettings.json";
@@ -52,8 +54,13 @@ namespace VMC_Unit_Tests.BaseTests
 
             configReader = new(baseConfig);
             jsonFileHandler = new(baseConfig);
+            envFileHandler = new(baseConfig);
+            envHandler = new(baseConfig);
             baseConfig.ConfigHandler = configReader;
             baseConfig.JSONFileHandler = jsonFileHandler;
+            baseConfig.EnvFileHandler =  envFileHandler;
+            baseConfig.EnvHandler = envHandler;
+
             Environment.SetEnvironmentVariable("Test", "Hello_Unit_Test", EnvironmentVariableTarget.Process);
         }
 
@@ -97,7 +104,7 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Unit_Test";
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.Project);
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.Project);
 
             if (res != null)
             {
@@ -115,7 +122,7 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Unit_Test";
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.User);
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.User);
 
             if (res != null)
             {
@@ -133,7 +140,7 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Unit_Test";
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.System);
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.System);
 
             if (res != null)
             {
@@ -150,7 +157,7 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Unit_Test";
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
 
             if (res != null)
             {
@@ -167,15 +174,15 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Test";
 
-            configReader.EnvSave("Test", "Hello_Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
+            envHandler.EnvSave("Test", "Hello_Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
 
             if (res != null)
             {
                 Assert.That(val == res, "Value is not equal after modification");
 
-                configReader.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
+                envHandler.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, LaunchJsonConfigFilePath, "environmentVariables");
             }
             else
             {
@@ -216,7 +223,7 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Unit_Test";
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, envConfigFilePath);
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, envConfigFilePath);
 
             if (res != null)
             {
@@ -233,15 +240,15 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Test";
 
-            configReader.EnvSave("Test", "Hello_Test", EnvAccessMode.File, envConfigFilePath);
+            envHandler.EnvSave("Test", "Hello_Test", EnvAccessMode.File, envConfigFilePath);
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, envConfigFilePath);
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, envConfigFilePath);
 
             if (res != null)
             {
                 Assert.That(val == res, "Value is not equal after modification");
 
-                configReader.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, envConfigFilePath);
+                envHandler.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, envConfigFilePath);
             }
             else
             {
@@ -254,7 +261,7 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Unit_Test";
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
 
             if (res != null)
             {
@@ -271,15 +278,15 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Test";
 
-            configReader.EnvSave("Test", "Hello_Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
+            envHandler.EnvSave("Test", "Hello_Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
 
             if (res != null)
             {
                 Assert.That(val == res, "Value is not equal after modification");
 
-                configReader.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
+                envHandler.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, xmlConfigFilePath1, "EnvironmentVariables");
             }
             else
             {
@@ -292,15 +299,15 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Test";
 
-            configReader.EnvSave("Test", "Hello_Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
+            envHandler.EnvSave("Test", "Hello_Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
 
             if (res != null)
             {
                 Assert.That(val == res, "Value is not equal after modification");
 
-                configReader.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
+                envHandler.EnvSave("Test", "Hello_Unit_Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
             }
             else
             {
@@ -313,7 +320,7 @@ namespace VMC_Unit_Tests.BaseTests
         {
             string val = "Hello_Unit_Test";
 
-            string? res = configReader.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
+            string? res = envHandler.EnvRead("Test", EnvAccessMode.File, xmlConfigFilePath2, "EnvironmentVariables");
 
             if (res != null)
             {

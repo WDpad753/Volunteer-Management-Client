@@ -1,4 +1,5 @@
 ﻿using BaseClass.Base.Interface;
+using BaseClass.Helper;
 using BaseClass.Model;
 using CustomMessageBox.MVVM.Models;
 using System;
@@ -322,7 +323,11 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
         private void OnSave()
         {
-            if(SelectedRegType)
+            if(!string.IsNullOrWhiteSpace(SelectedRegType))
+            {
+                RegPath? reg = RegModeSelector.RegSelector(SelectedRegType);
+            }
+
 
 
             baseConfig.Messagebox?.Show("Save Successful.", DialogTitle.Info, DialogButtons.Ok);
