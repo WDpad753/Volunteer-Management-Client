@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 namespace VMC_Unit_Tests.BaseTests
 {
-    public class CoreLibTests
+    internal class CoreLibTests
     {
         private IBase? baseConfig;
         private LogWriter logwriter;
