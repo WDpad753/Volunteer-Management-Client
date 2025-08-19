@@ -80,7 +80,7 @@ namespace VMC_Unit_Tests.EncryptionTests
                 ConvertStringToBytes();
                 importEncryptedData = false;
             }
-            else if(importEncryptedTestData)
+            else if (importEncryptedTestData)
             {
                 testValue = Convert.ToBase64String(ProtectedData.Protect(Encoding.UTF8.GetBytes("SOFTWARE\\AppTest"), null, DataProtectionScope.CurrentUser));
                 ConvertStringToBytesReg();
@@ -121,6 +121,7 @@ namespace VMC_Unit_Tests.EncryptionTests
             {
                 Assert.That(res == val, "Value is not equal");
                 importEncryptedTestData = true;
+                //testValue = Convert.ToBase64String(ProtectedData.Protect(Encoding.UTF8.GetBytes("SOFTWARE\\AppTest"), null, DataProtectionScope.CurrentUser));
             }
             else
             {
@@ -136,16 +137,15 @@ namespace VMC_Unit_Tests.EncryptionTests
             //string? res = registryHandler.RegistryRead("RegistryPath");
             List<byte[]>? res = registryHandler.RegistryValGet();
 
-            //if (res != null)
-            //{
-            //    ;
-
-            //    Assert.That( == val, "Value is not equal");
-            //}
-            //else
-            //{
-            //    Assert.Fail("Unable to Obtain a Value from Configuration File");
-            //}
+            if (res != null)
+            {
+                string result = Encoding.UTF8.GetString(ProtectedData.Unprotect(res[0], null, DataProtectionScope.CurrentUser));
+                Assert.That(result == val, "Value is not equal");
+            }
+            else
+            {
+                Assert.Fail("Unable to Obtain a Value from Configuration File");
+            }
         }
 
         private void ConvertStringToBytes()

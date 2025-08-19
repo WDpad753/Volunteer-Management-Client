@@ -73,6 +73,22 @@ jobs:
             fetch-depth: 0
             submodules: recursive
 
+        - name: Set the Registry Key with data
+          shell: pwsh
+          run: |
+            $keyPath = "HKCU:\SOFTWARE\AppTest"
+            
+            # Create the key if it doesn't exist
+            if (-not (Test-Path $keyPath)) {
+                New-Item -Path $keyPath | Out-Null
+            }
+
+            # Set the string value
+            Set-ItemProperty -Path $keyPath -Name "Test" -Value "Hello_Test"
+
+            # Optional: verify
+            Get-ItemProperty -Path $keyPath
+
         # - name: Checkout submodules
         #   run: git submodule update --init --recursive 
 
