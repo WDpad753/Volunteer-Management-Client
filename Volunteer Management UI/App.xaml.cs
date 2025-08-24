@@ -12,7 +12,7 @@ using Volunteer_Management_UI.MVVM.Views;
 using Volunteer_Management_UI.MVVM.Views.Login;
 using Volunteer_Management_UI.MVVM.Views.Registration;
 using Volunteer_Management_UI.MVVM.Views.ShellWindow;
-using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
+
 using Microsoft.Win32;
 using Prism.Ioc;
 using Prism.Unity;
@@ -56,7 +56,7 @@ namespace Volunteer_Management_UI
         string _configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", "App.config");
         string _logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmp");
 
-        public LogWriter logwriter;
+        public Logger logwriter;
         public BaseSettings baseSettings;
 
 
@@ -120,12 +120,12 @@ namespace Volunteer_Management_UI
             }
             catch (Exception ex)
             {
-                logwriter.LogWrite($"Exception in LogUnhandledException: {ex}", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
+                logwriter.LogError($"Exception in LogUnhandledException: {ex}");
 
             }
             finally
             {
-                logwriter.LogWrite($"Message: {message}; Exception: {exception}.", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
+                logwriter.LogError($"Message: {message}; Exception: {exception}.");
             }
         }
 

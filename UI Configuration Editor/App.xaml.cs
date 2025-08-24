@@ -15,7 +15,7 @@ using UI_Configuration_Editor.MVVM.Views.ConfigEditor;
 using UI_Configuration_Editor.MVVM.Views.Shell_Window;
 using UIBaseClass.Services.Navigation;
 using UIBaseClass.Services.Navigation.Interface;
-using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
+
 
 namespace UI_Configuration_Editor
 {
@@ -27,7 +27,7 @@ namespace UI_Configuration_Editor
         string _configPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", "App.config");
         string _logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tmp");
         IBase? baseSettings = null;
-        LogWriter? logwriter = null;
+        Logger? logwriter = null;
         BaseMessageBox? messageBox = null;
         BaseErrorMessageBox? errorMessageBox = null;
 
@@ -90,13 +90,13 @@ namespace UI_Configuration_Editor
             }
             catch (Exception ex)
             {
-                logwriter.LogWrite($"Exception in LogUnhandledException: {ex}", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
+                logwriter.LogError($"Exception in LogUnhandledException: {ex}");
                 //messageBox.Show($"Critical error occurred while handling an exception.Exception: {ex}", DialogTitle.Error, DialogButtons.Ok);
                 baseSettings.ErrorMessagebox.ShowError(message, ex);
             }
             finally
             {
-                logwriter.LogWrite($"Message: {message}; Exception: {exception}.", this.GetType().Name, FuncName.GetMethodName(), MessageLevels.Fatal);
+                logwriter.LogError($"Message: {message}; Exception: {exception}.");
                 //messageBox.Show($"Message: {message}; Exception: {exception}.", DialogTitle.Error, DialogButtons.Ok);
                 baseSettings.ErrorMessagebox.ShowError(message, exception);
             }
