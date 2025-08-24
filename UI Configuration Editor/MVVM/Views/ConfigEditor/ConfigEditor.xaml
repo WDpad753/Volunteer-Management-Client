@@ -46,6 +46,7 @@
                               Background="White"
                               Padding="0,0,2,0"
                               Margin="80,0,15,0" ItemsSource="{Binding EncTypeOptions}"
+                              DisplayMemberPath="Name" SelectedValuePath="Tag"
                               SelectedValue="{Binding SelectedEncType, Mode=TwoWay}"/>
                 </Grid>
 
@@ -135,7 +136,7 @@
 
                     </Grid>
                 </StackPanel>
-                
+
                 <StackPanel x:Name="EnvPanel" Grid.ColumnSpan="2" Grid.Row="2">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
@@ -153,7 +154,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Style>
-                    
+
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -356,7 +357,7 @@
 
                     </Grid>
                 </StackPanel>
-                
+
                 <StackPanel x:Name="PGPanel" Grid.ColumnSpan="2" Grid.Row="4">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
@@ -405,7 +406,7 @@
 
                     </Grid>
                 </StackPanel>
-                
+
                 <StackPanel x:Name="SQLitePanel" Grid.ColumnSpan="2" Grid.Row="4">
                     <StackPanel.Style>
                         <Style TargetType="StackPanel" BasedOn="{StaticResource AnimatedPanelStyle}">
@@ -435,19 +436,19 @@
                         </Grid>
                         <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,5">
                             <!--<Grid>-->
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Content="Password:" FontWeight="Bold"/>
-                                <!--<Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Password:" FontWeight="Bold"/>
+                            <!--<Password:BasePasswordBox Password="{Binding DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="24,0,15,0" IsEnabled="False"/>-->
                             <Password:CustomPasswordBox Password="{Binding ConfigEditorMdl.DBPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Width="Auto" Height="25" Background="White" Margin="16,0,15,0" IsEnabled="{Binding IsPasswordBoxEnabled}"/>
-                                <!--<CheckBox Style="{DynamicResource CheckBoxStyle}"  x:Name="DBLite_PassReq" Grid.Column="2" Checked="DBLite_PassReq_Checked" HorizontalContentAlignment="Center" Margin="5,0,15,0" Background="White" IsThreeState="False" >-->
+                            <!--<CheckBox Style="{DynamicResource CheckBoxStyle}"  x:Name="DBLite_PassReq" Grid.Column="2" Checked="DBLite_PassReq_Checked" HorizontalContentAlignment="Center" Margin="5,0,15,0" Background="White" IsThreeState="False" >-->
                             <!--<CheckBox Style="{DynamicResource CheckBoxStyle}"  x:Name="DBLite_PassReq" Grid.Column="2" IsChecked="{Binding IsPasswordBoxEnabled, Mode=TwoWay}" HorizontalContentAlignment="Center" Margin="5,0,15,0" Background="White" IsThreeState="False" >-->
                             <CheckBox x:Name="DBLite_PassReq" Grid.Column="2" IsChecked="{Binding IsPasswordBoxEnabled, Mode=TwoWay}" HorizontalContentAlignment="Center" Margin="5,0,15,0" Background="White" IsThreeState="False" FocusVisualStyle="{x:Null}" >
-                                    <TextBlock TextWrapping="Wrap" Text="Password Required" Width="50" />
-                                </CheckBox>
+                                <TextBlock TextWrapping="Wrap" Text="Password Required" Width="50" />
+                            </CheckBox>
                             <!--</Grid>-->
                         </Grid>
                     </Grid>

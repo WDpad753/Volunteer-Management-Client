@@ -16,7 +16,6 @@ using UI_Configuration_Editor.MVVM.Views.ConfigEditor;
 using UI_Configuration_Editor.MVVM.Views.Shell_Window;
 using UIBaseClass.MVVM.ViewBase;
 
-
 namespace UI_Configuration_Editor.MVVM.ViewModels
 {
     public class ConfigEditorViewModel : ViewModelBase
@@ -48,7 +47,14 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
             new ComboOptions() { Name = "SQLite", Tag = "SQLITE" },
         };
 
-        public ObservableCollection<EncryptionMode> EncTypeOptions { get; } = new ObservableCollection<EncryptionMode>();
+        //public ObservableCollection<EncryptionMode> EncTypeOptions { get; } = new ObservableCollection<EncryptionMode>();
+        public ObservableCollection<ComboOptions> EncTypeOptions { get; } = new ObservableCollection<ComboOptions>()
+        {
+            new ComboOptions() { Name = "-- Select an Encryption Type --", Tag = null },
+            new ComboOptions() { Name = $"{EncryptionMode.AES}", Tag = "AES" },
+            new ComboOptions() { Name = $"{EncryptionMode.RSA}", Tag = "RSA" },
+            new ComboOptions() { Name = $"{EncryptionMode.Hybrid}", Tag = "Hybrid" },
+        };
         public ObservableCollection<EnvAccessMode> EnvTypeOptions { get; } = new ObservableCollection<EnvAccessMode>();
 
         //public ObservableCollection<ComboOptions> RegTypeOptions { get; } = new ObservableCollection<ComboOptions>()
@@ -87,7 +93,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                         SelectedRegType = null;
                         ConfigEditorMdl.RegPath = "";
                     }
-                    if(value != "Env")
+                    if (value != "Env")
                     {
                         SelectedEnvType = null;
                     }
@@ -165,7 +171,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
             foreach (EnvAccessMode value in Enum.GetValues(typeof(EnvAccessMode)))
             {
-                if(value.ToString() != EnvAccessMode.Project.ToString() && value.ToString() != EnvAccessMode.File.ToString())
+                if (value.ToString() != EnvAccessMode.Project.ToString() && value.ToString() != EnvAccessMode.File.ToString())
                 {
                     EnvTypeOptions.Add(value);
                 }
@@ -176,10 +182,10 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                 RegTypeOptions.Add(value);
             }
 
-            foreach (EncryptionMode value in Enum.GetValues(typeof(EncryptionMode)))
-            {
-                EncTypeOptions.Add(value);
-            }
+            //foreach (EncryptionMode value in Enum.GetValues(typeof(EncryptionMode)))
+            //{
+            //    EncTypeOptions.Add(value);
+            //}
 
             ConfigEditorMdl.PropertyChanged += (s, e) => UpdateCanSave();
             SaveCommand = new DelegateCommand(OnSave).ObservesCanExecute(() => CanSave);
@@ -188,7 +194,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
         private void UpdateCanSave()
         {
-            if(SelectedPanel == "Reg")
+            if (SelectedPanel == "Reg")
             {
                 if (SelectedDBPanel == "SQLSERV")
                 {
@@ -223,7 +229,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                               !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
                 }
             }
-            else if(SelectedPanel == "Env")
+            else if (SelectedPanel == "Env")
             {
                 if (SelectedDBPanel == "SQLSERV")
                 {
@@ -287,7 +293,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
                               !string.IsNullOrWhiteSpace(ConfigEditorMdl.DBPassword);
                 }
             }
-            else if(SelectedPanel == "JsonFile")
+            else if (SelectedPanel == "JsonFile")
             {
                 if (SelectedDBPanel == "SQLSERV")
                 {
@@ -323,7 +329,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
         private void OnSave()
         {
-            if(!string.IsNullOrWhiteSpace(SelectedRegType))
+            if (!string.IsNullOrWhiteSpace(SelectedRegType))
             {
                 RegPath? reg = RegModeSelector.RegSelector(SelectedRegType);
             }
