@@ -1,5 +1,6 @@
 ﻿using BaseClass.Base;
 using BaseClass.Base.Interface;
+using BaseClass.BaseRegistry;
 using BaseClass.Config;
 using BaseClass.Helper;
 using BaseClass.JSON;
