@@ -7,7 +7,7 @@ using Volunteer_Management_UI.MVVM.Views.ShellWindow;
 using Volunteer_Management_UI.MVVM.Views;
 using System.Windows;
 using System.Windows.Input;
-using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
+
 using UIBaseClass.MVVM.ViewBase;
 using BaseClass.Base.Interface;
 
@@ -41,7 +41,7 @@ namespace Volunteer_Management_UI.MVVM.ViewModels
         {
             var main = _containerProvider.Resolve<MainWindow>();
 
-            _baseSettings.Logger.LogWrite("Login Successful", this.GetType().Name, FuncName.GetMethodName(), BaseLogger.Models.MessageLevels.Log);
+            _baseSettings.Logger.LogBase("Login Successful");
 
             // Close ShellWindow
             Application.Current.Windows.OfType<ShellWindow>().FirstOrDefault()?.Close();

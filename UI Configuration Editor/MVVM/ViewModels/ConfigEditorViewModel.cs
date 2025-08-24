@@ -15,7 +15,7 @@ using UI_Configuration_Editor.MVVM.Models;
 using UI_Configuration_Editor.MVVM.Views.ConfigEditor;
 using UI_Configuration_Editor.MVVM.Views.Shell_Window;
 using UIBaseClass.MVVM.ViewBase;
-using FuncName = BaseClass.MethodNameExtractor.FuncNameExtractor;
+
 
 namespace UI_Configuration_Editor.MVVM.ViewModels
 {
@@ -332,7 +332,7 @@ namespace UI_Configuration_Editor.MVVM.ViewModels
 
             baseConfig.Messagebox?.Show("Save Successful.", DialogTitle.Info, DialogButtons.Ok);
 
-            baseConfig.Logger?.LogWrite("Save Successful", this.GetType().Name, FuncName.GetMethodName(), BaseLogger.Models.MessageLevels.Log);
+            baseConfig.Logger?.LogBase("Save Successful");
         }
     }
 }
